@@ -14,8 +14,8 @@ TEST_RUN = True
 if TEST_RUN:
     EPOCHS_RANGE = [10]
     LEARNING_RATE_RANGE = [0.001]
-    BATCH_SIZE_RANGE = [128]
-    L2_REGULARIZE_RANGE = [0.01]
+    BATCH_SIZE_RANGE = [256]
+    L2_REGULARIZE_RANGE = [0.001]
 
 
 def problem_2():
@@ -136,6 +136,11 @@ def find_loss_and_gradient(X, y_preds, y_actual, loss_type='MSE', has_gradient=F
 
 
 def linear_regression_MNIST(EPOCHS, BATCH_SIZE, L2_REGULARIZE, LEARNING_RATE, show_epoch_logs=False):
+    print('\n')
+    print(
+        f'Running Linear Regression with EPOCHS={EPOCHS}, BATCH_SIZE={BATCH_SIZE}, LEARNING_RATE={LEARNING_RATE} and '
+        f'L2_REGULARIZE={L2_REGULARIZE}')
+
     X_train = np.load('fashion_mnist_train_images.npy')
     y_train = np.load('fashion_mnist_train_labels.npy')
 
@@ -143,10 +148,6 @@ def linear_regression_MNIST(EPOCHS, BATCH_SIZE, L2_REGULARIZE, LEARNING_RATE, sh
     y_test = np.load('fashion_mnist_test_labels.npy')
 
     X_train, X_val, y_train, y_val = train_test_split(X_train, y_train, test_size=VALIDATION_SIZE, random_state=SEED)
-
-    print(f'{X_train.shape} train samples')
-    print(f'{X_val.shape} validation samples')
-    print(f'{X_test.shape} test samples')
 
     columns = X_train.shape[1]
 
@@ -163,6 +164,16 @@ def linear_regression_MNIST(EPOCHS, BATCH_SIZE, L2_REGULARIZE, LEARNING_RATE, sh
     X_val = X_val / 255.0
     X_test = X_test / 255.0
 
+    print(f'{X_train.shape} train samples')
+    print(f'{X_val.shape} validation samples')
+    print(f'{X_test.shape} test samples')
+    print('\n')
+
+    print(f'{y_train.shape} train labels')
+    print(f'{y_val.shape} validation labels')
+    print(f'{y_test.shape} test labels')
+    print('\n')
+
     for EPOCH in range(1, EPOCHS + 1):
         print(f'Running Epoch: {EPOCH}')
         data_indices = np.arange(len(X_train))
@@ -175,9 +186,8 @@ def linear_regression_MNIST(EPOCHS, BATCH_SIZE, L2_REGULARIZE, LEARNING_RATE, sh
 
             x_batch = X_train_shuffled[batch_start:batch_end]
             y_batch = y_train_shuffled[batch_start:batch_end]
-            # print(x_batch.shape)
-            batch_preds = x_batch @ w + b
 
+            batch_preds = x_batch @ w + b
             y_probs = softmax(batch_preds)
 
             (train_loss, train_acc), (gradient_w, gradient_b) = find_loss_and_gradient(x_batch, y_probs, y_batch,
@@ -187,6 +197,7 @@ def linear_regression_MNIST(EPOCHS, BATCH_SIZE, L2_REGULARIZE, LEARNING_RATE, sh
             if show_epoch_logs:
                 print('Train Loss: ', train_loss)
                 print('Train Accuracy: ', str(train_acc * 100) + '%')
+
             w = w - LEARNING_RATE * (gradient_w + L2_REGULARIZE * w)
             b = b - LEARNING_RATE * gradient_b
 
@@ -247,6 +258,7 @@ def ComputeGradients(L, x, zs):
         gradients.append((db, dw))
         k += 1
     return gradients
+
 
 f_w = np.array([1, -2, 1 / 4])
 f_b = np.array([0])

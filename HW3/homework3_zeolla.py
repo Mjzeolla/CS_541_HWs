@@ -18,7 +18,7 @@ if TEST_RUN:
     L2_REGULARIZE_RANGE = [0.001]
 
 
-def problem_2():
+def problem_3():
     models = []
     for epoch in EPOCHS_RANGE:
         for learning_rate in LEARNING_RATE_RANGE:
@@ -224,7 +224,7 @@ def linear_regression_MNIST(EPOCHS, BATCH_SIZE, L2_REGULARIZE, LEARNING_RATE, sh
     return validation_per_epoch, testing_loss, testing_accuracy
 
 
-problem_2()
+# problem_3()
 
 
 def AffineTransformation(W, b, x):
@@ -273,6 +273,10 @@ x = np.array([[-1], [1]])
 L = [g, f]
 
 Z = Composition(L, x)
+
+print('\nTesting problem_4b:')
+print('Output: ', AffineTransformation(g_w, g_b, x))
+print('\n')
 
 print('\nTesting problem_4d:')
 print('Output: ', Z)

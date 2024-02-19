@@ -1,6 +1,7 @@
 import numpy as np
 import matplotlib.pyplot as plt
 from sklearn.model_selection import train_test_split
+import sys
 
 SEED = 42
 np.random.seed(SEED)
@@ -12,9 +13,11 @@ L2_REGULARIZE_RANGE = [0.1, 0.01]
 
 VALIDATION_SIZE = 0.20
 
-TEST_RUN = True
+TEST_RUN = False
+COPY_LOGS = False
+
 if TEST_RUN:
-    EPOCHS_RANGE = [10]
+    EPOCHS_RANGE = [50]
     LEARNING_RATE_RANGE = [0.01]
     BATCH_SIZE_RANGE = [32]
     L2_REGULARIZE_RANGE = [0.001]
@@ -47,7 +50,7 @@ def problem_3():
                     models.append(model)
 
     filtered_models = list(filter(lambda obj: np.isfinite(obj['testing_loss']), models))
-    sorted_models = sorted(filtered_models, key=lambda obj: float(obj['testing_loss']), reverse=True)
+    sorted_models = sorted(filtered_models, key=lambda obj: float(obj['testing_accuracy']), reverse=True)
 
     print('The Best Model Was: ')
     if len(sorted_models) > 0:
@@ -230,7 +233,19 @@ def linear_regression_MNIST(EPOCHS, BATCH_SIZE, L2_REGULARIZE, LEARNING_RATE, sh
     return validation_per_epoch, testing_loss, testing_accuracy
 
 
-problem_3()
+if COPY_LOGS:
+    original_stdout = sys.stdout
+    logs_path = 'run_logs_linear.txt'
+    with open(logs_path, 'w') as log_file:
+        sys.stdout = log_file
+        print('\nTesting problem_3:')
+        problem_3()
+        print('\n')
+    sys.stdout = original_stdout
+else:
+    print('\nTesting problem_3:')
+    problem_3()
+    print('\n')
 
 
 def AffineTransformation(W, b, x):

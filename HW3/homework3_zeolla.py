@@ -25,10 +25,12 @@ if TEST_RUN:
 
 def problem_3():
     models = []
+    n_models = len(EPOCHS_RANGE) * len(LEARNING_RATE_RANGE) * len(BATCH_SIZE_RANGE) * len(L2_REGULARIZE_RANGE)
     for epoch in EPOCHS_RANGE:
         for learning_rate in LEARNING_RATE_RANGE:
             for batch_size in BATCH_SIZE_RANGE:
                 for L2_value in L2_REGULARIZE_RANGE:
+                    print(f'Running for Model {len(models) + 1}/{n_models}')
                     model_key = f'EPOCH: {epoch}, LR: f{learning_rate}, BATCH: {batch_size}, L2: {L2_value}'
                     validation_metrics, testing_loss, testing_accuracy = linear_regression_MNIST(epoch,
                                                                                                  batch_size, L2_value,

@@ -1,0 +1,918 @@
+
+Testing problem_3:
+Running for Model 1/24
+
+
+Running Linear Regression with EPOCHS=10, BATCH_SIZE=32, LEARNING_RATE=0.1 and L2_REGULARIZE=0.1
+(48000, 784) train samples
+(12000, 784) validation samples
+(10000, 784) test samples
+
+
+(48000, 10) train labels
+(12000, 10) validation labels
+(10000, 10) test labels
+
+
+Epoch 1, Validation Loss: 0.9546760284717989 and Validation Accuracy: 0.6945
+Epoch 2, Validation Loss: 0.8994793344773052 and Validation Accuracy: 0.7133333333333334
+Epoch 3, Validation Loss: 0.9126281317666108 and Validation Accuracy: 0.7093333333333334
+Epoch 4, Validation Loss: 0.8839569010393273 and Validation Accuracy: 0.7103333333333334
+Epoch 5, Validation Loss: 0.8982892055940659 and Validation Accuracy: 0.7211666666666666
+Epoch 6, Validation Loss: 0.8974526008565743 and Validation Accuracy: 0.71025
+Epoch 7, Validation Loss: 0.8593972118882524 and Validation Accuracy: 0.7183333333333334
+Epoch 8, Validation Loss: 0.9119627363247491 and Validation Accuracy: 0.71075
+Epoch 9, Validation Loss: 0.8868177671770459 and Validation Accuracy: 0.7238333333333333
+Epoch 10, Validation Loss: 0.9823831866210976 and Validation Accuracy: 0.69025
+Final Validation Loss: 0.9823831866210976 and Validation Accuracy: 69.025%
+Final Testing Loss: 0.9874036916797739 and Testing Accuracy: 68.97%
+
+
+Running for Model 2/24
+
+
+Running Linear Regression with EPOCHS=10, BATCH_SIZE=32, LEARNING_RATE=0.1 and L2_REGULARIZE=0.01
+(48000, 784) train samples
+(12000, 784) validation samples
+(10000, 784) test samples
+
+
+(48000, 10) train labels
+(12000, 10) validation labels
+(10000, 10) test labels
+
+
+Epoch 1, Validation Loss: 0.5859807183182971 and Validation Accuracy: 0.80525
+Epoch 2, Validation Loss: 0.620069152219719 and Validation Accuracy: 0.79025
+Epoch 3, Validation Loss: 0.6108327834102 and Validation Accuracy: 0.8005833333333333
+Epoch 4, Validation Loss: 0.5599978953037076 and Validation Accuracy: 0.81625
+Epoch 5, Validation Loss: 0.5927756975236654 and Validation Accuracy: 0.80375
+Epoch 6, Validation Loss: 0.6251677768815124 and Validation Accuracy: 0.7854166666666667
+Epoch 7, Validation Loss: 0.6008011722084249 and Validation Accuracy: 0.7989166666666667
+Epoch 8, Validation Loss: 0.5837971461240965 and Validation Accuracy: 0.8106666666666666
+Epoch 9, Validation Loss: 0.624035996792178 and Validation Accuracy: 0.7868333333333334
+Epoch 10, Validation Loss: 0.592218020711941 and Validation Accuracy: 0.8005833333333333
+Final Validation Loss: 0.592218020711941 and Validation Accuracy: 80.05833333333334%
+Final Testing Loss: 0.6056697825360297 and Testing Accuracy: 79.83%
+
+
+Running for Model 3/24
+
+
+Running Linear Regression with EPOCHS=10, BATCH_SIZE=128, LEARNING_RATE=0.1 and L2_REGULARIZE=0.1
+(48000, 784) train samples
+(12000, 784) validation samples
+(10000, 784) test samples
+
+
+(48000, 10) train labels
+(12000, 10) validation labels
+(10000, 10) test labels
+
+
+Epoch 1, Validation Loss: 0.8408091753261915 and Validation Accuracy: 0.7630833333333333
+Epoch 2, Validation Loss: 0.851649736493955 and Validation Accuracy: 0.7644166666666666
+Epoch 3, Validation Loss: 0.9282551379680103 and Validation Accuracy: 0.6811666666666667
+Epoch 4, Validation Loss: 0.841688044829004 and Validation Accuracy: 0.7568333333333334
+Epoch 5, Validation Loss: 0.8583117514870534 and Validation Accuracy: 0.7529166666666667
+Epoch 6, Validation Loss: 0.9088927546434046 and Validation Accuracy: 0.708
+Epoch 7, Validation Loss: 0.8361863009320271 and Validation Accuracy: 0.7555833333333334
+Epoch 8, Validation Loss: 0.8444116502756936 and Validation Accuracy: 0.7455833333333334
+Epoch 9, Validation Loss: 0.8890754869735248 and Validation Accuracy: 0.6999166666666666
+Epoch 10, Validation Loss: 0.8469081867628199 and Validation Accuracy: 0.73925
+Final Validation Loss: 0.8469081867628199 and Validation Accuracy: 73.925%
+Final Testing Loss: 0.8507901191047673 and Testing Accuracy: 73.31%
+
+
+Running for Model 4/24
+
+
+Running Linear Regression with EPOCHS=10, BATCH_SIZE=128, LEARNING_RATE=0.1 and L2_REGULARIZE=0.01
+(48000, 784) train samples
+(12000, 784) validation samples
+(10000, 784) test samples
+
+
+(48000, 10) train labels
+(12000, 10) validation labels
+(10000, 10) test labels
+
+
+Epoch 1, Validation Loss: 0.6222734457176708 and Validation Accuracy: 0.8013333333333333
+Epoch 2, Validation Loss: 0.5861427143729635 and Validation Accuracy: 0.8070833333333334
+Epoch 3, Validation Loss: 0.5792780688755973 and Validation Accuracy: 0.8146666666666667
+Epoch 4, Validation Loss: 0.5743258893752438 and Validation Accuracy: 0.8093333333333333
+Epoch 5, Validation Loss: 0.5638753180494764 and Validation Accuracy: 0.81675
+Epoch 6, Validation Loss: 0.5589587136604913 and Validation Accuracy: 0.8211666666666667
+Epoch 7, Validation Loss: 0.5670146420187349 and Validation Accuracy: 0.8176666666666667
+Epoch 8, Validation Loss: 0.5616040921305274 and Validation Accuracy: 0.82
+Epoch 9, Validation Loss: 0.5703015024524019 and Validation Accuracy: 0.8136666666666666
+Epoch 10, Validation Loss: 0.58079148863727 and Validation Accuracy: 0.8048333333333333
+Final Validation Loss: 0.58079148863727 and Validation Accuracy: 80.48333333333333%
+Final Testing Loss: 0.5928308930963386 and Testing Accuracy: 80.39%
+
+
+Running for Model 5/24
+
+
+Running Linear Regression with EPOCHS=10, BATCH_SIZE=32, LEARNING_RATE=0.01 and L2_REGULARIZE=0.1
+(48000, 784) train samples
+(12000, 784) validation samples
+(10000, 784) test samples
+
+
+(48000, 10) train labels
+(12000, 10) validation labels
+(10000, 10) test labels
+
+
+Epoch 1, Validation Loss: 0.8491644233460486 and Validation Accuracy: 0.7564166666666666
+Epoch 2, Validation Loss: 0.8384381312386925 and Validation Accuracy: 0.7530833333333333
+Epoch 3, Validation Loss: 0.8368559758866292 and Validation Accuracy: 0.7513333333333333
+Epoch 4, Validation Loss: 0.8419611158613571 and Validation Accuracy: 0.7474166666666666
+Epoch 5, Validation Loss: 0.8373252256485363 and Validation Accuracy: 0.7514166666666666
+Epoch 6, Validation Loss: 0.8370786470694674 and Validation Accuracy: 0.7543333333333333
+Epoch 7, Validation Loss: 0.8368522280191217 and Validation Accuracy: 0.7665833333333333
+Epoch 8, Validation Loss: 0.8357506069415745 and Validation Accuracy: 0.7591666666666667
+Epoch 9, Validation Loss: 0.8353684923770016 and Validation Accuracy: 0.7565833333333334
+Epoch 10, Validation Loss: 0.8374500759198229 and Validation Accuracy: 0.7570833333333333
+Final Validation Loss: 0.8374500759198229 and Validation Accuracy: 75.70833333333333%
+Final Testing Loss: 0.8434432700815525 and Testing Accuracy: 75.09%
+
+
+Running for Model 6/24
+
+
+Running Linear Regression with EPOCHS=10, BATCH_SIZE=32, LEARNING_RATE=0.01 and L2_REGULARIZE=0.01
+(48000, 784) train samples
+(12000, 784) validation samples
+(10000, 784) test samples
+
+
+(48000, 10) train labels
+(12000, 10) validation labels
+(10000, 10) test labels
+
+
+Epoch 1, Validation Loss: 0.6952110581877449 and Validation Accuracy: 0.77525
+Epoch 2, Validation Loss: 0.6298025011900081 and Validation Accuracy: 0.7963333333333333
+Epoch 3, Validation Loss: 0.6050790980659051 and Validation Accuracy: 0.8065833333333333
+Epoch 4, Validation Loss: 0.5875665328710802 and Validation Accuracy: 0.8135
+Epoch 5, Validation Loss: 0.5766263424444902 and Validation Accuracy: 0.8161666666666667
+Epoch 6, Validation Loss: 0.5741729450442302 and Validation Accuracy: 0.8159166666666666
+Epoch 7, Validation Loss: 0.5699766999608632 and Validation Accuracy: 0.818
+Epoch 8, Validation Loss: 0.564752747125805 and Validation Accuracy: 0.8213333333333334
+Epoch 9, Validation Loss: 0.5630509248115484 and Validation Accuracy: 0.8221666666666667
+Epoch 10, Validation Loss: 0.564633458314673 and Validation Accuracy: 0.8190833333333334
+Final Validation Loss: 0.564633458314673 and Validation Accuracy: 81.90833333333333%
+Final Testing Loss: 0.5794489135394771 and Testing Accuracy: 81.16%
+
+
+Running for Model 7/24
+
+
+Running Linear Regression with EPOCHS=10, BATCH_SIZE=128, LEARNING_RATE=0.01 and L2_REGULARIZE=0.1
+(48000, 784) train samples
+(12000, 784) validation samples
+(10000, 784) test samples
+
+
+(48000, 10) train labels
+(12000, 10) validation labels
+(10000, 10) test labels
+
+
+Epoch 1, Validation Loss: 0.9829266404100393 and Validation Accuracy: 0.7019166666666666
+Epoch 2, Validation Loss: 0.8895257772719513 and Validation Accuracy: 0.73475
+Epoch 3, Validation Loss: 0.8606552220284992 and Validation Accuracy: 0.7470833333333333
+Epoch 4, Validation Loss: 0.8484265727238421 and Validation Accuracy: 0.7531666666666667
+Epoch 5, Validation Loss: 0.8424443168902274 and Validation Accuracy: 0.7558333333333334
+Epoch 6, Validation Loss: 0.8392638124255632 and Validation Accuracy: 0.7569166666666667
+Epoch 7, Validation Loss: 0.8373455226397419 and Validation Accuracy: 0.76125
+Epoch 8, Validation Loss: 0.8364084894919791 and Validation Accuracy: 0.7603333333333333
+Epoch 9, Validation Loss: 0.8397774630871119 and Validation Accuracy: 0.7570833333333333
+Epoch 10, Validation Loss: 0.8367666783432234 and Validation Accuracy: 0.7598333333333334
+Final Validation Loss: 0.8367666783432234 and Validation Accuracy: 75.98333333333333%
+Final Testing Loss: 0.8419085655550255 and Testing Accuracy: 75.44%
+
+
+Running for Model 8/24
+
+
+Running Linear Regression with EPOCHS=10, BATCH_SIZE=128, LEARNING_RATE=0.01 and L2_REGULARIZE=0.01
+(48000, 784) train samples
+(12000, 784) validation samples
+(10000, 784) test samples
+
+
+(48000, 10) train labels
+(12000, 10) validation labels
+(10000, 10) test labels
+
+
+Epoch 1, Validation Loss: 0.9162195970898145 and Validation Accuracy: 0.7095
+Epoch 2, Validation Loss: 0.7871113084722721 and Validation Accuracy: 0.7485
+Epoch 3, Validation Loss: 0.7305912606354859 and Validation Accuracy: 0.7671666666666667
+Epoch 4, Validation Loss: 0.694397999061805 and Validation Accuracy: 0.7764166666666666
+Epoch 5, Validation Loss: 0.6704917915959682 and Validation Accuracy: 0.7850833333333334
+Epoch 6, Validation Loss: 0.6529211661711276 and Validation Accuracy: 0.7905833333333333
+Epoch 7, Validation Loss: 0.6392033524365394 and Validation Accuracy: 0.79475
+Epoch 8, Validation Loss: 0.6282890406236663 and Validation Accuracy: 0.7991666666666667
+Epoch 9, Validation Loss: 0.6195464365008271 and Validation Accuracy: 0.8005
+Epoch 10, Validation Loss: 0.6120115846312164 and Validation Accuracy: 0.8034166666666667
+Final Validation Loss: 0.6120115846312164 and Validation Accuracy: 80.34166666666667%
+Final Testing Loss: 0.6231843426207406 and Testing Accuracy: 79.96%
+
+
+Running for Model 9/24
+
+
+Running Linear Regression with EPOCHS=10, BATCH_SIZE=32, LEARNING_RATE=0.001 and L2_REGULARIZE=0.1
+(48000, 784) train samples
+(12000, 784) validation samples
+(10000, 784) test samples
+
+
+(48000, 10) train labels
+(12000, 10) validation labels
+(10000, 10) test labels
+
+
+Epoch 1, Validation Loss: 1.2050582931506701 and Validation Accuracy: 0.66725
+Epoch 2, Validation Loss: 1.0233283734773564 and Validation Accuracy: 0.69
+Epoch 3, Validation Loss: 0.9507892437203568 and Validation Accuracy: 0.7073333333333334
+Epoch 4, Validation Loss: 0.9126964581644049 and Validation Accuracy: 0.7228333333333333
+Epoch 5, Validation Loss: 0.8895646743364465 and Validation Accuracy: 0.73325
+Epoch 6, Validation Loss: 0.8741415040134989 and Validation Accuracy: 0.73975
+Epoch 7, Validation Loss: 0.8638757405216025 and Validation Accuracy: 0.7455833333333334
+Epoch 8, Validation Loss: 0.8567597957954132 and Validation Accuracy: 0.7486666666666667
+Epoch 9, Validation Loss: 0.8516742609384569 and Validation Accuracy: 0.74925
+Epoch 10, Validation Loss: 0.8484737144955585 and Validation Accuracy: 0.75075
+Final Validation Loss: 0.8484737144955585 and Validation Accuracy: 75.075%
+Final Testing Loss: 0.8527645945114941 and Testing Accuracy: 74.53%
+
+
+Running for Model 10/24
+
+
+Running Linear Regression with EPOCHS=10, BATCH_SIZE=32, LEARNING_RATE=0.001 and L2_REGULARIZE=0.01
+(48000, 784) train samples
+(12000, 784) validation samples
+(10000, 784) test samples
+
+
+(48000, 10) train labels
+(12000, 10) validation labels
+(10000, 10) test labels
+
+
+Epoch 1, Validation Loss: 1.1738178297010957 and Validation Accuracy: 0.67075
+Epoch 2, Validation Loss: 0.9687820677472117 and Validation Accuracy: 0.6934166666666667
+Epoch 3, Validation Loss: 0.8784130525305275 and Validation Accuracy: 0.7215833333333334
+Epoch 4, Validation Loss: 0.82448351482567 and Validation Accuracy: 0.7361666666666666
+Epoch 5, Validation Loss: 0.7872959398826124 and Validation Accuracy: 0.7473333333333333
+Epoch 6, Validation Loss: 0.7595958055360362 and Validation Accuracy: 0.75775
+Epoch 7, Validation Loss: 0.7379380711730241 and Validation Accuracy: 0.76625
+Epoch 8, Validation Loss: 0.7207655910671079 and Validation Accuracy: 0.7700833333333333
+Epoch 9, Validation Loss: 0.7060810267562492 and Validation Accuracy: 0.7758333333333334
+Epoch 10, Validation Loss: 0.6939447666357038 and Validation Accuracy: 0.7788333333333334
+Final Validation Loss: 0.6939447666357038 and Validation Accuracy: 77.88333333333334%
+Final Testing Loss: 0.7014802790949777 and Testing Accuracy: 77.24%
+
+
+Running for Model 11/24
+
+
+Running Linear Regression with EPOCHS=10, BATCH_SIZE=128, LEARNING_RATE=0.001 and L2_REGULARIZE=0.1
+(48000, 784) train samples
+(12000, 784) validation samples
+(10000, 784) test samples
+
+
+(48000, 10) train labels
+(12000, 10) validation labels
+(10000, 10) test labels
+
+
+Epoch 1, Validation Loss: 1.743014045036217 and Validation Accuracy: 0.64075
+Epoch 2, Validation Loss: 1.467904096252691 and Validation Accuracy: 0.6575
+Epoch 3, Validation Loss: 1.3107226203884497 and Validation Accuracy: 0.6655833333333333
+Epoch 4, Validation Loss: 1.2108942396716165 and Validation Accuracy: 0.671
+Epoch 5, Validation Loss: 1.1422020150003367 and Validation Accuracy: 0.6725833333333333
+Epoch 6, Validation Loss: 1.0924258488272207 and Validation Accuracy: 0.68
+Epoch 7, Validation Loss: 1.054553727073858 and Validation Accuracy: 0.68425
+Epoch 8, Validation Loss: 1.024974139867195 and Validation Accuracy: 0.6910833333333334
+Epoch 9, Validation Loss: 1.0011339017499459 and Validation Accuracy: 0.6965
+Epoch 10, Validation Loss: 0.9815836991614741 and Validation Accuracy: 0.7018333333333333
+Final Validation Loss: 0.9815836991614741 and Validation Accuracy: 70.18333333333334%
+Final Testing Loss: 0.9843901989479946 and Testing Accuracy: 69.3%
+
+
+Running for Model 12/24
+
+
+Running Linear Regression with EPOCHS=10, BATCH_SIZE=128, LEARNING_RATE=0.001 and L2_REGULARIZE=0.01
+(48000, 784) train samples
+(12000, 784) validation samples
+(10000, 784) test samples
+
+
+(48000, 10) train labels
+(12000, 10) validation labels
+(10000, 10) test labels
+
+
+Epoch 1, Validation Loss: 1.7347824732155317 and Validation Accuracy: 0.62775
+Epoch 2, Validation Loss: 1.448352949342309 and Validation Accuracy: 0.6509166666666667
+Epoch 3, Validation Loss: 1.2830112366989335 and Validation Accuracy: 0.6600833333333334
+Epoch 4, Validation Loss: 1.176515449493096 and Validation Accuracy: 0.6660833333333334
+Epoch 5, Validation Loss: 1.1022590724787098 and Validation Accuracy: 0.6728333333333333
+Epoch 6, Validation Loss: 1.0470105974973272 and Validation Accuracy: 0.6790833333333334
+Epoch 7, Validation Loss: 1.0041200430903359 and Validation Accuracy: 0.6865833333333333
+Epoch 8, Validation Loss: 0.9697051986893527 and Validation Accuracy: 0.6959166666666666
+Epoch 9, Validation Loss: 0.9412935337202138 and Validation Accuracy: 0.701
+Epoch 10, Validation Loss: 0.9172665394778153 and Validation Accuracy: 0.7069166666666666
+Final Validation Loss: 0.9172665394778153 and Validation Accuracy: 70.69166666666666%
+Final Testing Loss: 0.9203135376429837 and Testing Accuracy: 70.06%
+
+
+Running for Model 13/24
+
+
+Running Linear Regression with EPOCHS=30, BATCH_SIZE=32, LEARNING_RATE=0.1 and L2_REGULARIZE=0.1
+(48000, 784) train samples
+(12000, 784) validation samples
+(10000, 784) test samples
+
+
+(48000, 10) train labels
+(12000, 10) validation labels
+(10000, 10) test labels
+
+
+Epoch 1, Validation Loss: 0.8492045605711868 and Validation Accuracy: 0.7405
+Epoch 2, Validation Loss: 0.8858051090178442 and Validation Accuracy: 0.7068333333333333
+Epoch 3, Validation Loss: 0.9553255570010566 and Validation Accuracy: 0.6719166666666667
+Epoch 4, Validation Loss: 0.9769210531041024 and Validation Accuracy: 0.658
+Epoch 5, Validation Loss: 0.8871643346347617 and Validation Accuracy: 0.6996666666666667
+Epoch 6, Validation Loss: 0.8734918533991852 and Validation Accuracy: 0.7193333333333334
+Epoch 7, Validation Loss: 0.8650140986853865 and Validation Accuracy: 0.7324166666666667
+Epoch 8, Validation Loss: 1.0179898544570547 and Validation Accuracy: 0.6686666666666666
+Epoch 9, Validation Loss: 0.8632207834020869 and Validation Accuracy: 0.7155833333333333
+Epoch 10, Validation Loss: 0.8574250889338021 and Validation Accuracy: 0.74075
+Epoch 11, Validation Loss: 0.9266325018619641 and Validation Accuracy: 0.7109166666666666
+Epoch 12, Validation Loss: 0.867716870629084 and Validation Accuracy: 0.7096666666666667
+Epoch 13, Validation Loss: 1.0590035178962758 and Validation Accuracy: 0.6089166666666667
+Epoch 14, Validation Loss: 1.0310724357236187 and Validation Accuracy: 0.6646666666666666
+Epoch 15, Validation Loss: 0.9042157175863852 and Validation Accuracy: 0.7351666666666666
+Epoch 16, Validation Loss: 0.8850241344388023 and Validation Accuracy: 0.7259166666666667
+Epoch 17, Validation Loss: 0.8597931016887078 and Validation Accuracy: 0.7340833333333333
+Epoch 18, Validation Loss: 0.8617808087908387 and Validation Accuracy: 0.7168333333333333
+Epoch 19, Validation Loss: 0.9305824386210485 and Validation Accuracy: 0.6794166666666667
+Epoch 20, Validation Loss: 0.8518984551480054 and Validation Accuracy: 0.7191666666666666
+Epoch 21, Validation Loss: 0.8846062163016216 and Validation Accuracy: 0.7446666666666667
+Epoch 22, Validation Loss: 0.8987994646329062 and Validation Accuracy: 0.7289166666666667
+Epoch 23, Validation Loss: 1.3162480648863109 and Validation Accuracy: 0.6235833333333334
+Epoch 24, Validation Loss: 0.9271574244819231 and Validation Accuracy: 0.6831666666666667
+Epoch 25, Validation Loss: 0.9480438286000235 and Validation Accuracy: 0.7083333333333334
+Epoch 26, Validation Loss: 0.9075544109303767 and Validation Accuracy: 0.7229166666666667
+Epoch 27, Validation Loss: 0.8742767519591752 and Validation Accuracy: 0.7239166666666667
+Epoch 28, Validation Loss: 0.871019320305453 and Validation Accuracy: 0.7275833333333334
+Epoch 29, Validation Loss: 0.9597927350776205 and Validation Accuracy: 0.6595833333333333
+Epoch 30, Validation Loss: 0.9208854388509468 and Validation Accuracy: 0.7078333333333333
+Final Validation Loss: 0.9208854388509468 and Validation Accuracy: 70.78333333333333%
+Final Testing Loss: 0.9264837980351377 and Testing Accuracy: 69.6%
+
+
+Running for Model 14/24
+
+
+Running Linear Regression with EPOCHS=30, BATCH_SIZE=32, LEARNING_RATE=0.1 and L2_REGULARIZE=0.01
+(48000, 784) train samples
+(12000, 784) validation samples
+(10000, 784) test samples
+
+
+(48000, 10) train labels
+(12000, 10) validation labels
+(10000, 10) test labels
+
+
+Epoch 1, Validation Loss: 0.5734470607202606 and Validation Accuracy: 0.8114166666666667
+Epoch 2, Validation Loss: 0.5742877342824171 and Validation Accuracy: 0.8128333333333333
+Epoch 3, Validation Loss: 0.574882730530392 and Validation Accuracy: 0.8129166666666666
+Epoch 4, Validation Loss: 0.5794161174243893 and Validation Accuracy: 0.80925
+Epoch 5, Validation Loss: 0.5764003402175385 and Validation Accuracy: 0.8093333333333333
+Epoch 6, Validation Loss: 0.6001593341552555 and Validation Accuracy: 0.8064166666666667
+Epoch 7, Validation Loss: 0.5639628506084738 and Validation Accuracy: 0.8160833333333334
+Epoch 8, Validation Loss: 0.5940927352033972 and Validation Accuracy: 0.8016666666666666
+Epoch 9, Validation Loss: 0.6576754854743747 and Validation Accuracy: 0.7711666666666667
+Epoch 10, Validation Loss: 0.5953677289091454 and Validation Accuracy: 0.8
+Epoch 11, Validation Loss: 0.5764953168230054 and Validation Accuracy: 0.8146666666666667
+Epoch 12, Validation Loss: 0.5724087638573644 and Validation Accuracy: 0.8109166666666666
+Epoch 13, Validation Loss: 0.5995790745993068 and Validation Accuracy: 0.8010833333333334
+Epoch 14, Validation Loss: 0.7166723150411803 and Validation Accuracy: 0.7346666666666667
+Epoch 15, Validation Loss: 0.6437858033684343 and Validation Accuracy: 0.79125
+Epoch 16, Validation Loss: 0.5866157872334656 and Validation Accuracy: 0.80325
+Epoch 17, Validation Loss: 0.5968116848362429 and Validation Accuracy: 0.8005
+Epoch 18, Validation Loss: 0.5677124992449808 and Validation Accuracy: 0.81775
+Epoch 19, Validation Loss: 0.5980261036575849 and Validation Accuracy: 0.8015
+Epoch 20, Validation Loss: 0.5973706450994422 and Validation Accuracy: 0.79975
+Epoch 21, Validation Loss: 0.6162261897349983 and Validation Accuracy: 0.79575
+Epoch 22, Validation Loss: 0.7081214683774025 and Validation Accuracy: 0.7634166666666666
+Epoch 23, Validation Loss: 0.6572787973572783 and Validation Accuracy: 0.7710833333333333
+Epoch 24, Validation Loss: 0.5827690260265932 and Validation Accuracy: 0.801
+Epoch 25, Validation Loss: 0.6419804687172488 and Validation Accuracy: 0.7765
+Epoch 26, Validation Loss: 0.6174707143438117 and Validation Accuracy: 0.786
+Epoch 27, Validation Loss: 0.5787604520108083 and Validation Accuracy: 0.807
+Epoch 28, Validation Loss: 0.577751313547542 and Validation Accuracy: 0.8060833333333334
+Epoch 29, Validation Loss: 0.6492095670636022 and Validation Accuracy: 0.7789166666666667
+Epoch 30, Validation Loss: 0.6601135254656184 and Validation Accuracy: 0.7851666666666667
+Final Validation Loss: 0.6601135254656184 and Validation Accuracy: 78.51666666666667%
+Final Testing Loss: 0.6779159936709944 and Testing Accuracy: 77.60000000000001%
+
+
+Running for Model 15/24
+
+
+Running Linear Regression with EPOCHS=30, BATCH_SIZE=128, LEARNING_RATE=0.1 and L2_REGULARIZE=0.1
+(48000, 784) train samples
+(12000, 784) validation samples
+(10000, 784) test samples
+
+
+(48000, 10) train labels
+(12000, 10) validation labels
+(10000, 10) test labels
+
+
+Epoch 1, Validation Loss: 0.840611021175691 and Validation Accuracy: 0.7409166666666667
+Epoch 2, Validation Loss: 0.836389645925052 and Validation Accuracy: 0.7634166666666666
+Epoch 3, Validation Loss: 0.8429032764574983 and Validation Accuracy: 0.7600833333333333
+Epoch 4, Validation Loss: 0.8498010466502126 and Validation Accuracy: 0.7405833333333334
+Epoch 5, Validation Loss: 0.8612203825558984 and Validation Accuracy: 0.7348333333333333
+Epoch 6, Validation Loss: 0.836149710421786 and Validation Accuracy: 0.7548333333333334
+Epoch 7, Validation Loss: 0.8683410214931543 and Validation Accuracy: 0.7441666666666666
+Epoch 8, Validation Loss: 0.8696359950055846 and Validation Accuracy: 0.7163333333333334
+Epoch 9, Validation Loss: 0.8602661734980271 and Validation Accuracy: 0.7460833333333333
+Epoch 10, Validation Loss: 0.844963116829608 and Validation Accuracy: 0.7608333333333334
+Epoch 11, Validation Loss: 0.8419095109569366 and Validation Accuracy: 0.7503333333333333
+Epoch 12, Validation Loss: 0.8668480609752929 and Validation Accuracy: 0.73025
+Epoch 13, Validation Loss: 0.8955655191908753 and Validation Accuracy: 0.7279166666666667
+Epoch 14, Validation Loss: 0.8535062692992369 and Validation Accuracy: 0.73125
+Epoch 15, Validation Loss: 0.8410252959641618 and Validation Accuracy: 0.7508333333333334
+Epoch 16, Validation Loss: 0.8741377341837654 and Validation Accuracy: 0.7110833333333333
+Epoch 17, Validation Loss: 0.8455916167244029 and Validation Accuracy: 0.7446666666666667
+Epoch 18, Validation Loss: 0.8431060197670798 and Validation Accuracy: 0.7514166666666666
+Epoch 19, Validation Loss: 0.8637173152839891 and Validation Accuracy: 0.7443333333333333
+Epoch 20, Validation Loss: 0.8479595664948515 and Validation Accuracy: 0.74725
+Epoch 21, Validation Loss: 0.8614819300809535 and Validation Accuracy: 0.7441666666666666
+Epoch 22, Validation Loss: 0.8445048799627621 and Validation Accuracy: 0.75525
+Epoch 23, Validation Loss: 0.8417605781958967 and Validation Accuracy: 0.7566666666666667
+Epoch 24, Validation Loss: 0.8400993148072624 and Validation Accuracy: 0.7606666666666667
+Epoch 25, Validation Loss: 0.8920998881978451 and Validation Accuracy: 0.7056666666666667
+Epoch 26, Validation Loss: 0.8846556991612204 and Validation Accuracy: 0.7404166666666666
+Epoch 27, Validation Loss: 0.8513461533436479 and Validation Accuracy: 0.7480833333333333
+Epoch 28, Validation Loss: 0.8605510148150141 and Validation Accuracy: 0.7304166666666667
+Epoch 29, Validation Loss: 0.8585107791576779 and Validation Accuracy: 0.73575
+Epoch 30, Validation Loss: 0.8395682423647876 and Validation Accuracy: 0.7509166666666667
+Final Validation Loss: 0.8395682423647876 and Validation Accuracy: 75.09166666666667%
+Final Testing Loss: 0.8435112176905104 and Testing Accuracy: 74.76%
+
+
+Running for Model 16/24
+
+
+Running Linear Regression with EPOCHS=30, BATCH_SIZE=128, LEARNING_RATE=0.1 and L2_REGULARIZE=0.01
+(48000, 784) train samples
+(12000, 784) validation samples
+(10000, 784) test samples
+
+
+(48000, 10) train labels
+(12000, 10) validation labels
+(10000, 10) test labels
+
+
+Epoch 1, Validation Loss: 0.6413074722424117 and Validation Accuracy: 0.7855
+Epoch 2, Validation Loss: 0.5921939117343402 and Validation Accuracy: 0.80975
+Epoch 3, Validation Loss: 0.5735254861656123 and Validation Accuracy: 0.8158333333333333
+Epoch 4, Validation Loss: 0.5653898149525411 and Validation Accuracy: 0.8185
+Epoch 5, Validation Loss: 0.5652114888768555 and Validation Accuracy: 0.81625
+Epoch 6, Validation Loss: 0.5825688199284038 and Validation Accuracy: 0.81075
+Epoch 7, Validation Loss: 0.5653905672536643 and Validation Accuracy: 0.8166666666666667
+Epoch 8, Validation Loss: 0.58739151422641 and Validation Accuracy: 0.8046666666666666
+Epoch 9, Validation Loss: 0.5638155337395332 and Validation Accuracy: 0.8175
+Epoch 10, Validation Loss: 0.5630252711309963 and Validation Accuracy: 0.8206666666666667
+Epoch 11, Validation Loss: 0.5687898459061191 and Validation Accuracy: 0.8138333333333333
+Epoch 12, Validation Loss: 0.618901738069536 and Validation Accuracy: 0.7853333333333333
+Epoch 13, Validation Loss: 0.560901149233544 and Validation Accuracy: 0.81775
+Epoch 14, Validation Loss: 0.5789127515584371 and Validation Accuracy: 0.80875
+Epoch 15, Validation Loss: 0.568395314605357 and Validation Accuracy: 0.8175
+Epoch 16, Validation Loss: 0.5552933319631201 and Validation Accuracy: 0.8239166666666666
+Epoch 17, Validation Loss: 0.5595731082104725 and Validation Accuracy: 0.8230833333333333
+Epoch 18, Validation Loss: 0.5788471670953099 and Validation Accuracy: 0.8099166666666666
+Epoch 19, Validation Loss: 0.561061727939211 and Validation Accuracy: 0.8200833333333334
+Epoch 20, Validation Loss: 0.5653538640195144 and Validation Accuracy: 0.8196666666666667
+Epoch 21, Validation Loss: 0.5686255852460768 and Validation Accuracy: 0.81825
+Epoch 22, Validation Loss: 0.5664074468955512 and Validation Accuracy: 0.8133333333333334
+Epoch 23, Validation Loss: 0.5630232560109035 and Validation Accuracy: 0.8165833333333333
+Epoch 24, Validation Loss: 0.5695726362050211 and Validation Accuracy: 0.8133333333333334
+Epoch 25, Validation Loss: 0.5689663127103993 and Validation Accuracy: 0.8168333333333333
+Epoch 26, Validation Loss: 0.5765746075217365 and Validation Accuracy: 0.8105833333333333
+Epoch 27, Validation Loss: 0.5618462050251092 and Validation Accuracy: 0.819
+Epoch 28, Validation Loss: 0.5770159662084358 and Validation Accuracy: 0.8108333333333333
+Epoch 29, Validation Loss: 0.5619217230920931 and Validation Accuracy: 0.8186666666666667
+Epoch 30, Validation Loss: 0.5672365267516464 and Validation Accuracy: 0.818
+Final Validation Loss: 0.5672365267516464 and Validation Accuracy: 81.8%
+Final Testing Loss: 0.583951000425098 and Testing Accuracy: 80.77%
+
+
+Running for Model 17/24
+
+
+Running Linear Regression with EPOCHS=30, BATCH_SIZE=32, LEARNING_RATE=0.01 and L2_REGULARIZE=0.1
+(48000, 784) train samples
+(12000, 784) validation samples
+(10000, 784) test samples
+
+
+(48000, 10) train labels
+(12000, 10) validation labels
+(10000, 10) test labels
+
+
+Epoch 1, Validation Loss: 0.8511824228438188 and Validation Accuracy: 0.75
+Epoch 2, Validation Loss: 0.8374777019300411 and Validation Accuracy: 0.7571666666666667
+Epoch 3, Validation Loss: 0.8373581995798997 and Validation Accuracy: 0.754
+Epoch 4, Validation Loss: 0.8380356623953419 and Validation Accuracy: 0.7511666666666666
+Epoch 5, Validation Loss: 0.839044792998846 and Validation Accuracy: 0.7494166666666666
+Epoch 6, Validation Loss: 0.8446991313258668 and Validation Accuracy: 0.7465
+Epoch 7, Validation Loss: 0.8397115562906386 and Validation Accuracy: 0.7564166666666666
+Epoch 8, Validation Loss: 0.8356006454004572 and Validation Accuracy: 0.7565833333333334
+Epoch 9, Validation Loss: 0.8396859193462877 and Validation Accuracy: 0.7519166666666667
+Epoch 10, Validation Loss: 0.835726314456455 and Validation Accuracy: 0.7646666666666667
+Epoch 11, Validation Loss: 0.8358699342907255 and Validation Accuracy: 0.7601666666666667
+Epoch 12, Validation Loss: 0.8357513451077675 and Validation Accuracy: 0.7604166666666666
+Epoch 13, Validation Loss: 0.8413302607840571 and Validation Accuracy: 0.7573333333333333
+Epoch 14, Validation Loss: 0.835862743558214 and Validation Accuracy: 0.75575
+Epoch 15, Validation Loss: 0.835319316044663 and Validation Accuracy: 0.7611666666666667
+Epoch 16, Validation Loss: 0.8385499331708779 and Validation Accuracy: 0.7571666666666667
+Epoch 17, Validation Loss: 0.8355671809358064 and Validation Accuracy: 0.7699166666666667
+Epoch 18, Validation Loss: 0.8405358128486942 and Validation Accuracy: 0.7518333333333334
+Epoch 19, Validation Loss: 0.8423817758339466 and Validation Accuracy: 0.7593333333333333
+Epoch 20, Validation Loss: 0.8349311862001866 and Validation Accuracy: 0.7653333333333333
+Epoch 21, Validation Loss: 0.8374531819293994 and Validation Accuracy: 0.75175
+Epoch 22, Validation Loss: 0.8387411053700619 and Validation Accuracy: 0.7558333333333334
+Epoch 23, Validation Loss: 0.836216845955613 and Validation Accuracy: 0.75425
+Epoch 24, Validation Loss: 0.8376623072693278 and Validation Accuracy: 0.76275
+Epoch 25, Validation Loss: 0.8430246832163149 and Validation Accuracy: 0.7518333333333334
+Epoch 26, Validation Loss: 0.8409807124231586 and Validation Accuracy: 0.7470833333333333
+Epoch 27, Validation Loss: 0.8420842034897311 and Validation Accuracy: 0.75925
+Epoch 28, Validation Loss: 0.8350307389340739 and Validation Accuracy: 0.7670833333333333
+Epoch 29, Validation Loss: 0.8368321041182992 and Validation Accuracy: 0.7585
+Epoch 30, Validation Loss: 0.8370155198714426 and Validation Accuracy: 0.76425
+Final Validation Loss: 0.8370155198714426 and Validation Accuracy: 76.425%
+Final Testing Loss: 0.8430565076850828 and Testing Accuracy: 75.84%
+
+
+Running for Model 18/24
+
+
+Running Linear Regression with EPOCHS=30, BATCH_SIZE=32, LEARNING_RATE=0.01 and L2_REGULARIZE=0.01
+(48000, 784) train samples
+(12000, 784) validation samples
+(10000, 784) test samples
+
+
+(48000, 10) train labels
+(12000, 10) validation labels
+(10000, 10) test labels
+
+
+Epoch 1, Validation Loss: 0.6979693333395609 and Validation Accuracy: 0.77525
+Epoch 2, Validation Loss: 0.6302993637550567 and Validation Accuracy: 0.8005
+Epoch 3, Validation Loss: 0.603304242665967 and Validation Accuracy: 0.8033333333333333
+Epoch 4, Validation Loss: 0.5876151507160298 and Validation Accuracy: 0.8115833333333333
+Epoch 5, Validation Loss: 0.5791603108334875 and Validation Accuracy: 0.8115833333333333
+Epoch 6, Validation Loss: 0.5734487566685057 and Validation Accuracy: 0.8150833333333334
+Epoch 7, Validation Loss: 0.5685089156753236 and Validation Accuracy: 0.8168333333333333
+Epoch 8, Validation Loss: 0.5690063353891197 and Validation Accuracy: 0.8156666666666667
+Epoch 9, Validation Loss: 0.5662751024985768 and Validation Accuracy: 0.8174166666666667
+Epoch 10, Validation Loss: 0.5602447788316596 and Validation Accuracy: 0.82275
+Epoch 11, Validation Loss: 0.55974714036291 and Validation Accuracy: 0.8216666666666667
+Epoch 12, Validation Loss: 0.5602187916334662 and Validation Accuracy: 0.8196666666666667
+Epoch 13, Validation Loss: 0.559001725839593 and Validation Accuracy: 0.8215
+Epoch 14, Validation Loss: 0.5613060569644772 and Validation Accuracy: 0.821
+Epoch 15, Validation Loss: 0.5574325776251604 and Validation Accuracy: 0.8245833333333333
+Epoch 16, Validation Loss: 0.5573383945219784 and Validation Accuracy: 0.8240833333333333
+Epoch 17, Validation Loss: 0.5626688510956188 and Validation Accuracy: 0.8178333333333333
+Epoch 18, Validation Loss: 0.5615283938777976 and Validation Accuracy: 0.819
+Epoch 19, Validation Loss: 0.5582380143066066 and Validation Accuracy: 0.8199166666666666
+Epoch 20, Validation Loss: 0.5580749963369415 and Validation Accuracy: 0.8210833333333334
+Epoch 21, Validation Loss: 0.5584893804285319 and Validation Accuracy: 0.8195
+Epoch 22, Validation Loss: 0.5569602748208278 and Validation Accuracy: 0.8251666666666667
+Epoch 23, Validation Loss: 0.5635280712404328 and Validation Accuracy: 0.8198333333333333
+Epoch 24, Validation Loss: 0.5595467513075554 and Validation Accuracy: 0.8209166666666666
+Epoch 25, Validation Loss: 0.559362465921868 and Validation Accuracy: 0.82125
+Epoch 26, Validation Loss: 0.5559984364045736 and Validation Accuracy: 0.8240833333333333
+Epoch 27, Validation Loss: 0.5561087219439222 and Validation Accuracy: 0.8234166666666667
+Epoch 28, Validation Loss: 0.5592235110563581 and Validation Accuracy: 0.8216666666666667
+Epoch 29, Validation Loss: 0.562636560799536 and Validation Accuracy: 0.8188333333333333
+Epoch 30, Validation Loss: 0.5591413146790796 and Validation Accuracy: 0.8215
+Final Validation Loss: 0.5591413146790796 and Validation Accuracy: 82.15%
+Final Testing Loss: 0.5729687271234097 and Testing Accuracy: 81.58%
+
+
+Running for Model 19/24
+
+
+Running Linear Regression with EPOCHS=30, BATCH_SIZE=128, LEARNING_RATE=0.01 and L2_REGULARIZE=0.1
+(48000, 784) train samples
+(12000, 784) validation samples
+(10000, 784) test samples
+
+
+(48000, 10) train labels
+(12000, 10) validation labels
+(10000, 10) test labels
+
+
+Epoch 1, Validation Loss: 0.9838875514765171 and Validation Accuracy: 0.696
+Epoch 2, Validation Loss: 0.8899032526377655 and Validation Accuracy: 0.7346666666666667
+Epoch 3, Validation Loss: 0.860770161286512 and Validation Accuracy: 0.74475
+Epoch 4, Validation Loss: 0.8508293770944209 and Validation Accuracy: 0.7475833333333334
+Epoch 5, Validation Loss: 0.8426410089896941 and Validation Accuracy: 0.75675
+Epoch 6, Validation Loss: 0.8394394767841235 and Validation Accuracy: 0.763
+Epoch 7, Validation Loss: 0.8376282807889723 and Validation Accuracy: 0.7580833333333333
+Epoch 8, Validation Loss: 0.8383270030832626 and Validation Accuracy: 0.7578333333333334
+Epoch 9, Validation Loss: 0.8361119059223577 and Validation Accuracy: 0.76325
+Epoch 10, Validation Loss: 0.8355672705766113 and Validation Accuracy: 0.76425
+Epoch 11, Validation Loss: 0.8353239411859418 and Validation Accuracy: 0.76325
+Epoch 12, Validation Loss: 0.8362060862804794 and Validation Accuracy: 0.7578333333333334
+Epoch 13, Validation Loss: 0.8361475657368928 and Validation Accuracy: 0.7539166666666667
+Epoch 14, Validation Loss: 0.8360963474397292 and Validation Accuracy: 0.7623333333333333
+Epoch 15, Validation Loss: 0.8350394206478968 and Validation Accuracy: 0.7616666666666667
+Epoch 16, Validation Loss: 0.8351999029990926 and Validation Accuracy: 0.7624166666666666
+Epoch 17, Validation Loss: 0.8354446315856205 and Validation Accuracy: 0.7596666666666667
+Epoch 18, Validation Loss: 0.8352001543880873 and Validation Accuracy: 0.76125
+Epoch 19, Validation Loss: 0.834985380941041 and Validation Accuracy: 0.7620833333333333
+Epoch 20, Validation Loss: 0.8357159146353302 and Validation Accuracy: 0.75975
+Epoch 21, Validation Loss: 0.8351166563948613 and Validation Accuracy: 0.7651666666666667
+Epoch 22, Validation Loss: 0.8348720662862886 and Validation Accuracy: 0.7650833333333333
+Epoch 23, Validation Loss: 0.8355780832525528 and Validation Accuracy: 0.7645
+Epoch 24, Validation Loss: 0.8346668620447658 and Validation Accuracy: 0.7623333333333333
+Epoch 25, Validation Loss: 0.8360105740056554 and Validation Accuracy: 0.763
+Epoch 26, Validation Loss: 0.8359293212242579 and Validation Accuracy: 0.76
+Epoch 27, Validation Loss: 0.8349388092281851 and Validation Accuracy: 0.7633333333333333
+Epoch 28, Validation Loss: 0.8348634399147223 and Validation Accuracy: 0.7614166666666666
+Epoch 29, Validation Loss: 0.8359265697217498 and Validation Accuracy: 0.76075
+Epoch 30, Validation Loss: 0.8348026971152895 and Validation Accuracy: 0.7596666666666667
+Final Validation Loss: 0.8348026971152895 and Validation Accuracy: 75.96666666666667%
+Final Testing Loss: 0.8395978845032347 and Testing Accuracy: 75.26%
+
+
+Running for Model 20/24
+
+
+Running Linear Regression with EPOCHS=30, BATCH_SIZE=128, LEARNING_RATE=0.01 and L2_REGULARIZE=0.01
+(48000, 784) train samples
+(12000, 784) validation samples
+(10000, 784) test samples
+
+
+(48000, 10) train labels
+(12000, 10) validation labels
+(10000, 10) test labels
+
+
+Epoch 1, Validation Loss: 0.9165189287796667 and Validation Accuracy: 0.7144166666666667
+Epoch 2, Validation Loss: 0.7872421904027002 and Validation Accuracy: 0.7464166666666666
+Epoch 3, Validation Loss: 0.7290364004670137 and Validation Accuracy: 0.7694166666666666
+Epoch 4, Validation Loss: 0.6933836913493012 and Validation Accuracy: 0.7793333333333333
+Epoch 5, Validation Loss: 0.6697098722522372 and Validation Accuracy: 0.7875
+Epoch 6, Validation Loss: 0.6518351293221764 and Validation Accuracy: 0.7910833333333334
+Epoch 7, Validation Loss: 0.6383701525468171 and Validation Accuracy: 0.79475
+Epoch 8, Validation Loss: 0.6283686353160225 and Validation Accuracy: 0.799
+Epoch 9, Validation Loss: 0.6190884912701505 and Validation Accuracy: 0.8006666666666666
+Epoch 10, Validation Loss: 0.6113703590908363 and Validation Accuracy: 0.8044166666666667
+Epoch 11, Validation Loss: 0.6054046260542099 and Validation Accuracy: 0.8061666666666667
+Epoch 12, Validation Loss: 0.6011174983647639 and Validation Accuracy: 0.807
+Epoch 13, Validation Loss: 0.5955804549913661 and Validation Accuracy: 0.8095833333333333
+Epoch 14, Validation Loss: 0.5930659614085396 and Validation Accuracy: 0.8104166666666667
+Epoch 15, Validation Loss: 0.5886882609630489 and Validation Accuracy: 0.81175
+Epoch 16, Validation Loss: 0.586849357779619 and Validation Accuracy: 0.8105833333333333
+Epoch 17, Validation Loss: 0.5832264910303881 and Validation Accuracy: 0.81275
+Epoch 18, Validation Loss: 0.580317318104824 and Validation Accuracy: 0.8158333333333333
+Epoch 19, Validation Loss: 0.5786967950076559 and Validation Accuracy: 0.81475
+Epoch 20, Validation Loss: 0.5767878718563585 and Validation Accuracy: 0.8166666666666667
+Epoch 21, Validation Loss: 0.576044387643268 and Validation Accuracy: 0.8161666666666667
+Epoch 22, Validation Loss: 0.5743977703443327 and Validation Accuracy: 0.81625
+Epoch 23, Validation Loss: 0.5726414384008098 and Validation Accuracy: 0.8174166666666667
+Epoch 24, Validation Loss: 0.570777801790871 and Validation Accuracy: 0.81775
+Epoch 25, Validation Loss: 0.5709736665977168 and Validation Accuracy: 0.8174166666666667
+Epoch 26, Validation Loss: 0.5689366225509731 and Validation Accuracy: 0.81825
+Epoch 27, Validation Loss: 0.5694696997526477 and Validation Accuracy: 0.8168333333333333
+Epoch 28, Validation Loss: 0.5668962867166221 and Validation Accuracy: 0.819
+Epoch 29, Validation Loss: 0.5660309343390514 and Validation Accuracy: 0.8201666666666667
+Epoch 30, Validation Loss: 0.5653655249149327 and Validation Accuracy: 0.8209166666666666
+Final Validation Loss: 0.5653655249149327 and Validation Accuracy: 82.09166666666667%
+Final Testing Loss: 0.5790854979088307 and Testing Accuracy: 81.3%
+
+
+Running for Model 21/24
+
+
+Running Linear Regression with EPOCHS=30, BATCH_SIZE=32, LEARNING_RATE=0.001 and L2_REGULARIZE=0.1
+(48000, 784) train samples
+(12000, 784) validation samples
+(10000, 784) test samples
+
+
+(48000, 10) train labels
+(12000, 10) validation labels
+(10000, 10) test labels
+
+
+Epoch 1, Validation Loss: 1.21265412984985 and Validation Accuracy: 0.6693333333333333
+Epoch 2, Validation Loss: 1.026295525258371 and Validation Accuracy: 0.6901666666666667
+Epoch 3, Validation Loss: 0.9526311589245625 and Validation Accuracy: 0.70725
+Epoch 4, Validation Loss: 0.9134865529957166 and Validation Accuracy: 0.72325
+Epoch 5, Validation Loss: 0.8901709265150907 and Validation Accuracy: 0.7336666666666667
+Epoch 6, Validation Loss: 0.8750573508789359 and Validation Accuracy: 0.7403333333333333
+Epoch 7, Validation Loss: 0.8651170299270353 and Validation Accuracy: 0.7405833333333334
+Epoch 8, Validation Loss: 0.857200192815202 and Validation Accuracy: 0.7494166666666666
+Epoch 9, Validation Loss: 0.8519189456730866 and Validation Accuracy: 0.7505
+Epoch 10, Validation Loss: 0.84840673005539 and Validation Accuracy: 0.7529166666666667
+Epoch 11, Validation Loss: 0.8454603951288068 and Validation Accuracy: 0.7565
+Epoch 12, Validation Loss: 0.8430061864470291 and Validation Accuracy: 0.759
+Epoch 13, Validation Loss: 0.8411771357382524 and Validation Accuracy: 0.75675
+Epoch 14, Validation Loss: 0.8402836190670514 and Validation Accuracy: 0.7595833333333334
+Epoch 15, Validation Loss: 0.8392330493201096 and Validation Accuracy: 0.7594166666666666
+Epoch 16, Validation Loss: 0.8379831149692196 and Validation Accuracy: 0.7625833333333333
+Epoch 17, Validation Loss: 0.8372795050001274 and Validation Accuracy: 0.75875
+Epoch 18, Validation Loss: 0.8371610614180809 and Validation Accuracy: 0.76
+Epoch 19, Validation Loss: 0.8366504507855193 and Validation Accuracy: 0.7621666666666667
+Epoch 20, Validation Loss: 0.8361645565358881 and Validation Accuracy: 0.7605
+Epoch 21, Validation Loss: 0.8361188891996557 and Validation Accuracy: 0.7623333333333333
+Epoch 22, Validation Loss: 0.8360265930337805 and Validation Accuracy: 0.7604166666666666
+Epoch 23, Validation Loss: 0.8353529062109208 and Validation Accuracy: 0.761
+Epoch 24, Validation Loss: 0.8356014391009685 and Validation Accuracy: 0.7616666666666667
+Epoch 25, Validation Loss: 0.8353295826763251 and Validation Accuracy: 0.7623333333333333
+Epoch 26, Validation Loss: 0.8355595045814639 and Validation Accuracy: 0.7618333333333334
+Epoch 27, Validation Loss: 0.8352882066312992 and Validation Accuracy: 0.7621666666666667
+Epoch 28, Validation Loss: 0.835516437956199 and Validation Accuracy: 0.7600833333333333
+Epoch 29, Validation Loss: 0.8350507471247612 and Validation Accuracy: 0.7623333333333333
+Epoch 30, Validation Loss: 0.835096648647497 and Validation Accuracy: 0.7624166666666666
+Final Validation Loss: 0.835096648647497 and Validation Accuracy: 76.24166666666666%
+Final Testing Loss: 0.8401277256910251 and Testing Accuracy: 75.5%
+
+
+Running for Model 22/24
+
+
+Running Linear Regression with EPOCHS=30, BATCH_SIZE=32, LEARNING_RATE=0.001 and L2_REGULARIZE=0.01
+(48000, 784) train samples
+(12000, 784) validation samples
+(10000, 784) test samples
+
+
+(48000, 10) train labels
+(12000, 10) validation labels
+(10000, 10) test labels
+
+
+Epoch 1, Validation Loss: 1.1793915455450996 and Validation Accuracy: 0.6648333333333334
+Epoch 2, Validation Loss: 0.971040878909954 and Validation Accuracy: 0.69525
+Epoch 3, Validation Loss: 0.8798468608564558 and Validation Accuracy: 0.7183333333333334
+Epoch 4, Validation Loss: 0.8260876168701016 and Validation Accuracy: 0.73575
+Epoch 5, Validation Loss: 0.7881803042218779 and Validation Accuracy: 0.7473333333333333
+Epoch 6, Validation Loss: 0.7612732486114264 and Validation Accuracy: 0.7553333333333333
+Epoch 7, Validation Loss: 0.7390694589327172 and Validation Accuracy: 0.7635
+Epoch 8, Validation Loss: 0.7212920614607733 and Validation Accuracy: 0.7705833333333333
+Epoch 9, Validation Loss: 0.7068672751296764 and Validation Accuracy: 0.7741666666666667
+Epoch 10, Validation Loss: 0.6943299406556154 and Validation Accuracy: 0.7794166666666666
+Epoch 11, Validation Loss: 0.6841311033659286 and Validation Accuracy: 0.77975
+Epoch 12, Validation Loss: 0.6748883968608276 and Validation Accuracy: 0.78475
+Epoch 13, Validation Loss: 0.6663457103047234 and Validation Accuracy: 0.78825
+Epoch 14, Validation Loss: 0.6591276386292303 and Validation Accuracy: 0.78875
+Epoch 15, Validation Loss: 0.6526694943621397 and Validation Accuracy: 0.7903333333333333
+Epoch 16, Validation Loss: 0.6470613523877952 and Validation Accuracy: 0.7914166666666667
+Epoch 17, Validation Loss: 0.6416354639403619 and Validation Accuracy: 0.7936666666666666
+Epoch 18, Validation Loss: 0.6370044710240925 and Validation Accuracy: 0.7951666666666667
+Epoch 19, Validation Loss: 0.6323546896675192 and Validation Accuracy: 0.7974166666666667
+Epoch 20, Validation Loss: 0.6283112686718066 and Validation Accuracy: 0.7980833333333334
+Epoch 21, Validation Loss: 0.6250202419228601 and Validation Accuracy: 0.7988333333333333
+Epoch 22, Validation Loss: 0.6216171595771428 and Validation Accuracy: 0.79975
+Epoch 23, Validation Loss: 0.618357390608917 and Validation Accuracy: 0.8010833333333334
+Epoch 24, Validation Loss: 0.6148609880200406 and Validation Accuracy: 0.8023333333333333
+Epoch 25, Validation Loss: 0.6122907132108456 and Validation Accuracy: 0.8041666666666667
+Epoch 26, Validation Loss: 0.6095105004027294 and Validation Accuracy: 0.8035
+Epoch 27, Validation Loss: 0.6073490257366433 and Validation Accuracy: 0.80375
+Epoch 28, Validation Loss: 0.6048398992299996 and Validation Accuracy: 0.8049166666666666
+Epoch 29, Validation Loss: 0.602735642175856 and Validation Accuracy: 0.8065833333333333
+Epoch 30, Validation Loss: 0.6008984976344489 and Validation Accuracy: 0.80825
+Final Validation Loss: 0.6008984976344489 and Validation Accuracy: 80.825%
+Final Testing Loss: 0.6125146545051803 and Testing Accuracy: 80.24%
+
+
+Running for Model 23/24
+
+
+Running Linear Regression with EPOCHS=30, BATCH_SIZE=128, LEARNING_RATE=0.001 and L2_REGULARIZE=0.1
+(48000, 784) train samples
+(12000, 784) validation samples
+(10000, 784) test samples
+
+
+(48000, 10) train labels
+(12000, 10) validation labels
+(10000, 10) test labels
+
+
+Epoch 1, Validation Loss: 1.730186208421867 and Validation Accuracy: 0.6375
+Epoch 2, Validation Loss: 1.4606919933839277 and Validation Accuracy: 0.6585
+Epoch 3, Validation Loss: 1.3063550452348873 and Validation Accuracy: 0.6593333333333333
+Epoch 4, Validation Loss: 1.20815669822523 and Validation Accuracy: 0.6659166666666667
+Epoch 5, Validation Loss: 1.1407200755531821 and Validation Accuracy: 0.67125
+Epoch 6, Validation Loss: 1.0913115560935474 and Validation Accuracy: 0.6778333333333333
+Epoch 7, Validation Loss: 1.0538719318268042 and Validation Accuracy: 0.6831666666666667
+Epoch 8, Validation Loss: 1.0245448516284696 and Validation Accuracy: 0.6900833333333334
+Epoch 9, Validation Loss: 1.0007935139538158 and Validation Accuracy: 0.6953333333333334
+Epoch 10, Validation Loss: 0.9813231124523051 and Validation Accuracy: 0.7004166666666667
+Epoch 11, Validation Loss: 0.964974052179367 and Validation Accuracy: 0.7065
+Epoch 12, Validation Loss: 0.951237068306784 and Validation Accuracy: 0.7103333333333334
+Epoch 13, Validation Loss: 0.93942441098715 and Validation Accuracy: 0.7150833333333333
+Epoch 14, Validation Loss: 0.9292465387403143 and Validation Accuracy: 0.7173333333333334
+Epoch 15, Validation Loss: 0.920406163942892 and Validation Accuracy: 0.7219166666666667
+Epoch 16, Validation Loss: 0.9126670199502208 and Validation Accuracy: 0.7239166666666667
+Epoch 17, Validation Loss: 0.9056658423643521 and Validation Accuracy: 0.726
+Epoch 18, Validation Loss: 0.8996615391456699 and Validation Accuracy: 0.7280833333333333
+Epoch 19, Validation Loss: 0.8942457342025025 and Validation Accuracy: 0.73125
+Epoch 20, Validation Loss: 0.8893349313927914 and Validation Accuracy: 0.7329166666666667
+Epoch 21, Validation Loss: 0.8850656432841771 and Validation Accuracy: 0.7361666666666666
+Epoch 22, Validation Loss: 0.8810727432290016 and Validation Accuracy: 0.7369166666666667
+Epoch 23, Validation Loss: 0.8774550999075921 and Validation Accuracy: 0.7385
+Epoch 24, Validation Loss: 0.8742642206146297 and Validation Accuracy: 0.7391666666666666
+Epoch 25, Validation Loss: 0.8714244555675814 and Validation Accuracy: 0.7403333333333333
+Epoch 26, Validation Loss: 0.8686965780798833 and Validation Accuracy: 0.7425833333333334
+Epoch 27, Validation Loss: 0.866291180798813 and Validation Accuracy: 0.7425833333333334
+Epoch 28, Validation Loss: 0.8640424198319012 and Validation Accuracy: 0.7439166666666667
+Epoch 29, Validation Loss: 0.862074327462543 and Validation Accuracy: 0.7453333333333333
+Epoch 30, Validation Loss: 0.8601520072736382 and Validation Accuracy: 0.748
+Final Validation Loss: 0.8601520072736382 and Validation Accuracy: 74.8%
+Final Testing Loss: 0.8645126691663454 and Testing Accuracy: 74.18%
+
+
+Running for Model 24/24
+
+
+Running Linear Regression with EPOCHS=30, BATCH_SIZE=128, LEARNING_RATE=0.001 and L2_REGULARIZE=0.01
+(48000, 784) train samples
+(12000, 784) validation samples
+(10000, 784) test samples
+
+
+(48000, 10) train labels
+(12000, 10) validation labels
+(10000, 10) test labels
+
+
+Epoch 1, Validation Loss: 1.733951024642532 and Validation Accuracy: 0.6428333333333334
+Epoch 2, Validation Loss: 1.4495019855859705 and Validation Accuracy: 0.6571666666666667
+Epoch 3, Validation Loss: 1.2843543078583588 and Validation Accuracy: 0.66575
+Epoch 4, Validation Loss: 1.1777488061588517 and Validation Accuracy: 0.6706666666666666
+Epoch 5, Validation Loss: 1.1030893351448958 and Validation Accuracy: 0.676
+Epoch 6, Validation Loss: 1.0479380265263076 and Validation Accuracy: 0.6811666666666667
+Epoch 7, Validation Loss: 1.0047633146113335 and Validation Accuracy: 0.6903333333333334
+Epoch 8, Validation Loss: 0.9702973324988035 and Validation Accuracy: 0.6958333333333333
+Epoch 9, Validation Loss: 0.9418175005946278 and Validation Accuracy: 0.7025
+Epoch 10, Validation Loss: 0.9177722141313068 and Validation Accuracy: 0.71025
+Epoch 11, Validation Loss: 0.8971160048023231 and Validation Accuracy: 0.71675
+Epoch 12, Validation Loss: 0.8791172843942072 and Validation Accuracy: 0.7219166666666667
+Epoch 13, Validation Loss: 0.8633171765093521 and Validation Accuracy: 0.7255833333333334
+Epoch 14, Validation Loss: 0.8491722194178019 and Validation Accuracy: 0.7304166666666667
+Epoch 15, Validation Loss: 0.8365048653028149 and Validation Accuracy: 0.73525
+Epoch 16, Validation Loss: 0.8250990781770753 and Validation Accuracy: 0.7376666666666667
+Epoch 17, Validation Loss: 0.8145292705022236 and Validation Accuracy: 0.7419166666666667
+Epoch 18, Validation Loss: 0.804897327723839 and Validation Accuracy: 0.744
+Epoch 19, Validation Loss: 0.7962425505698645 and Validation Accuracy: 0.74625
+Epoch 20, Validation Loss: 0.7878865589963546 and Validation Accuracy: 0.749
+Epoch 21, Validation Loss: 0.7802634125820482 and Validation Accuracy: 0.7511666666666666
+Epoch 22, Validation Loss: 0.7731743917639162 and Validation Accuracy: 0.7536666666666667
+Epoch 23, Validation Loss: 0.7665700754649049 and Validation Accuracy: 0.7551666666666667
+Epoch 24, Validation Loss: 0.760314547253772 and Validation Accuracy: 0.7578333333333334
+Epoch 25, Validation Loss: 0.7544180947552731 and Validation Accuracy: 0.7596666666666667
+Epoch 26, Validation Loss: 0.7489585537981235 and Validation Accuracy: 0.7610833333333333
+Epoch 27, Validation Loss: 0.7436484977852433 and Validation Accuracy: 0.76325
+Epoch 28, Validation Loss: 0.7387073199262885 and Validation Accuracy: 0.76475
+Epoch 29, Validation Loss: 0.7340744222158705 and Validation Accuracy: 0.7666666666666667
+Epoch 30, Validation Loss: 0.7295577745942999 and Validation Accuracy: 0.7679166666666667
+Final Validation Loss: 0.7295577745942999 and Validation Accuracy: 76.79166666666667%
+Final Testing Loss: 0.7357080724968388 and Testing Accuracy: 75.96000000000001%
+
+
+The Best Model Was: 
+{'key': 'EPOCH: 30, LR: f0.01, BATCH: 32, L2: 0.01', 'validation_loss_list': [0.6979693333395609, 0.6302993637550567, 0.603304242665967, 0.5876151507160298, 0.5791603108334875, 0.5734487566685057, 0.5685089156753236, 0.5690063353891197, 0.5662751024985768, 0.5602447788316596, 0.55974714036291, 0.5602187916334662, 0.559001725839593, 0.5613060569644772, 0.5574325776251604, 0.5573383945219784, 0.5626688510956188, 0.5615283938777976, 0.5582380143066066, 0.5580749963369415, 0.5584893804285319, 0.5569602748208278, 0.5635280712404328, 0.5595467513075554, 0.559362465921868, 0.5559984364045736, 0.5561087219439222, 0.5592235110563581, 0.562636560799536, 0.5591413146790796], 'testing_loss': 0.5729687271234097, 'params': {'EPOCH': 30, 'LR': 0.01, 'BATCH': 32, 'L2': 0.01}, 'validation_accuracy_list': [0.77525, 0.8005, 0.8033333333333333, 0.8115833333333333, 0.8115833333333333, 0.8150833333333334, 0.8168333333333333, 0.8156666666666667, 0.8174166666666667, 0.82275, 0.8216666666666667, 0.8196666666666667, 0.8215, 0.821, 0.8245833333333333, 0.8240833333333333, 0.8178333333333333, 0.819, 0.8199166666666666, 0.8210833333333334, 0.8195, 0.8251666666666667, 0.8198333333333333, 0.8209166666666666, 0.82125, 0.8240833333333333, 0.8234166666666667, 0.8216666666666667, 0.8188333333333333, 0.8215], 'testing_accuracy': 0.8158}
+
+

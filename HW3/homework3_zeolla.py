@@ -3,18 +3,20 @@ import matplotlib.pyplot as plt
 from sklearn.model_selection import train_test_split
 
 SEED = 42
-EPOCHS_RANGE = [10, 15, 25, 100]
-LEARNING_RATE_RANGE = [0.1, 0.01, 0.001, 0.0001]
-BATCH_SIZE_RANGE = [32, 64, 128, 256]
-L2_REGULARIZE_RANGE = [0.1, 0.01, 0.001, 0.0001]
 np.random.seed(SEED)
+
+EPOCHS_RANGE = [10, 30]
+LEARNING_RATE_RANGE = [0.1, 0.01, 0.001]
+BATCH_SIZE_RANGE = [32, 128]
+L2_REGULARIZE_RANGE = [0.1, 0.01]
+
 VALIDATION_SIZE = 0.20
 
 TEST_RUN = True
 if TEST_RUN:
     EPOCHS_RANGE = [10]
-    LEARNING_RATE_RANGE = [0.001]
-    BATCH_SIZE_RANGE = [256]
+    LEARNING_RATE_RANGE = [0.01]
+    BATCH_SIZE_RANGE = [32]
     L2_REGULARIZE_RANGE = [0.001]
 
 
@@ -112,6 +114,7 @@ def find_loss_and_gradient(X, y_preds, y_actual, loss_type='MSE', has_gradient=F
                 (np.where(y_preds != y_actual, ((y_preds - y_actual) / np.abs(y_preds - y_actual)), 0)))
     elif loss_type == 'CE':
         loss = -(1 / n) * np.sum(y_actual * np.log(y_preds))
+
         class_preds = np.argmax(y_preds, axis=1)
         y_actual_classes = np.argmax(y_actual, axis=1)
         right_preds = np.sum(class_preds == y_actual_classes)
@@ -125,12 +128,17 @@ def find_loss_and_gradient(X, y_preds, y_actual, loss_type='MSE', has_gradient=F
         # Simplify: y * (1 - y_pred) @ X.T
         # Simplify:  (y - y_pred) @ X.T
 
-        gradient_ce = y_actual * (1 / y_preds)
-        gradient_softmax = y_preds * (1 - y_preds)
-        gradient_f = X.T
+        # Gradient of b = d(ce)/d(b) => d(ce)/d(y_pred) * d(y_pred)/d(z) * d(z)/d(b)
+        # d(ce)/d(y_pred) aka Cross Entropy => d(y * log(y_pred)) => y * 1/y_pred
+        # d(y_pred)/d(z) aka SoftMax => y_pred * (1 - y_pred)
+        # d(z)/d(b) aka X.T @ w + b => 1
+        # So d(ce)/d(b) = y/y_pred * (y_pred - y_pred^2)
+        # Simplify: y * (1 - y_pred) -- You can remove the expanded y * y_pred in y - y_pred * y b/c y will  be 1 or 0
+        # Simplify: y - y_pred
 
-        gradient_w = -(1 / n) * (gradient_f @ (gradient_ce * gradient_softmax))
-        gradient_b = -(1 / n) * np.sum(gradient_ce * gradient_softmax)
+        if has_gradient:
+            gradient_w = -(1 / n) * (X.T @ (y_actual - y_preds))
+            gradient_b = -(1 / n) * np.sum(y_actual - y_preds)
 
     return (loss, accuracy), (gradient_w, gradient_b)
 
@@ -175,7 +183,6 @@ def linear_regression_MNIST(EPOCHS, BATCH_SIZE, L2_REGULARIZE, LEARNING_RATE, sh
     print('\n')
 
     for EPOCH in range(1, EPOCHS + 1):
-        print(f'Running Epoch: {EPOCH}')
         data_indices = np.arange(len(X_train))
         np.random.shuffle(data_indices)
         X_train_shuffled = X_train[data_indices]
@@ -207,8 +214,7 @@ def linear_regression_MNIST(EPOCHS, BATCH_SIZE, L2_REGULARIZE, LEARNING_RATE, sh
         (validation_loss, validation_acc), (_, _) = find_loss_and_gradient(X_val, validation_probs,
                                                                            y_val, loss_type='CE')
 
-        if show_epoch_logs:
-            print(f"Epoch {EPOCH}, Validation Loss: {validation_loss} and Validation Accuracy: {validation_acc}")
+        print(f"Epoch {EPOCH}, Validation Loss: {validation_loss} and Validation Accuracy: {validation_acc}")
 
         validation_per_epoch.append({'loss': validation_loss, 'accuracy': validation_acc})
 
@@ -224,7 +230,7 @@ def linear_regression_MNIST(EPOCHS, BATCH_SIZE, L2_REGULARIZE, LEARNING_RATE, sh
     return validation_per_epoch, testing_loss, testing_accuracy
 
 
-# problem_3()
+problem_3()
 
 
 def AffineTransformation(W, b, x):
@@ -279,7 +285,7 @@ print('Output: ', AffineTransformation(g_w, g_b, x))
 print('\n')
 
 print('\nTesting problem_4d:')
-print('Output: ', Z)
+print('Output: ', Z[-1])
 print('\n')
 
 gradients = ComputeGradients(L, x, Z)

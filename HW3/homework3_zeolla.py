@@ -166,7 +166,7 @@ def linear_regression_MNIST(EPOCHS, BATCH_SIZE, L2_REGULARIZE, LEARNING_RATE, sh
 
     classes = 10
     w = 0.01 * np.random.randn(columns, classes)
-    b = 0.01 * np.random.randn(1)
+    b = 0.01 * np.random.randn(classes)
     validation_per_epoch = []
 
     y_test = np.eye(classes)[y_test]

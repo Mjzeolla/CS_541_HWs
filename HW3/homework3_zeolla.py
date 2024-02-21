@@ -301,6 +301,10 @@ print('\nTesting problem_4b:')
 print('Output: ', AffineTransformation(g_w, g_b, x))
 print('\n')
 
+print('\nTesting problem_4c:')
+print('Output: ', Z)
+print('\n')
+
 print('\nTesting problem_4d:')
 print('Output: ', Z[-1])
 print('\n')

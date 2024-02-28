@@ -3,10 +3,12 @@ import copy
 import numpy as np
 import matplotlib.pyplot as plt
 import scipy.optimize
+from sklearn.decomposition import PCA
 from sklearn.model_selection import train_test_split
 import tensorflow as tf
 import keras
 from keras import layers
+import matplotlib.pyplot as plt
 
 # For this assignment, assume that every hidden layer has the same number of neurons.
 NUM_HIDDEN_LAYERS = 3
@@ -46,6 +48,7 @@ MODEL_ARCHITECTURE = [
         'activation_function': 'softmax'
     },
 ]
+
 
 # Unpack a list of weights and biases into their individual np.arrays.
 def unpack(weightsAndBiases):
@@ -106,10 +109,6 @@ def softmax(y):
 
 def relu(y):
     return np.maximum(0.0, y)
-
-
-def relu_gradient(z):
-    return np.where(z > 0, 1, 0)
 
 
 def find_loss(y_preds, y_actual, loss_type='MSE'):
@@ -173,9 +172,9 @@ def back_prop(x, y, weightsAndBiases):
             gradient_b = -(1 / n) * np.sum(previous_error)
         else:
 
-            gradient_a = relu_gradient(z)  # Apply ReLu gradient on inputs to ReLu layer activation
+            gradient_r = np.where(z > 0, 1, 0)  # Apply ReLu gradient on inputs to ReLu layer activation
             error = previous_error @ Ws[i + 1].T  # Find error in reference to the weights and previous error
-            error = error * gradient_a  # Apply ReLu error to the current layer
+            error = error * gradient_r  # Apply ReLu error to the current layer
 
             gradient_w = -(1 / n) * h.T @ error  # Find gradient based on ReLu error and inputs
             gradient_b = -(1 / n) * np.sum(error)
@@ -189,7 +188,9 @@ def back_prop(x, y, weightsAndBiases):
         bs[i] = bs[i] - LEARNING_RATE * gradient_b
 
     # Concatenate gradients
-    return np.hstack([dJdW.flatten() for dJdW in dJdWs] + [dJdb.flatten() for dJdb in dJdbs]), np.hstack([W.flatten() for W in Ws] + [b.flatten() for b in bs])
+    # TODO: Revisit this weight update system (try and update in-place)
+    return np.hstack([dJdW.flatten() for dJdW in dJdWs] + [dJdb.flatten() for dJdb in dJdbs]), np.hstack(
+        [W.flatten() for W in Ws] + [b.flatten() for b in bs])
 
 
 def SGD_date_shuffle(X_train, y_train):
@@ -207,10 +208,7 @@ def train(trainX, trainY, weightsAndBiases, testX, testY):
         f'L2_REGULARIZE={L2_REGULARIZE}')
 
     for epoch in range(NUM_EPOCHS):
-        # TODO: save the current set of weights and biases into trajectory; this is
-        # useful for visualizing the SGD trajectory.
-
-        print(f'Running EPOCH {epoch+1}/{NUM_EPOCHS}...')
+        print(f'Running EPOCH {epoch + 1}/{NUM_EPOCHS}...')
 
         # SGD Randomization for indices
         X_train_shuffled, y_train_shuffled = SGD_date_shuffle(trainX, trainY)
@@ -223,7 +221,7 @@ def train(trainX, trainY, weightsAndBiases, testX, testY):
 
             gradients, weights = back_prop(x_batch, y_batch, weightsAndBiases)
             weightsAndBiases = weights
-            trajectory.append(gradients)
+            trajectory.append(weights)
 
     testing_loss, _, _, _, testing_accuracy = forward_prop(testX, testY, weightsAndBiases)
 
@@ -306,34 +304,32 @@ def setup_MNIST(classes=10, has_validation=False):
 
 
 def plotSGDPath(trainX, trainY, trajectory):
-    # TODO: change this toy plot to show a 2-d projection of the weight space
-    # along with the associated loss (cross-entropy), plus a superimposed 
-    # trajectory across the landscape that was traversed using SGD. Use
-    # sklearn.decomposition.PCA's fit_transform and inverse_transform methods.
-
-    def toyFunction(x1, x2):
-        return np.sin((2 * x1 ** 2 - x2) / 10.)
-
+    pca = PCA(n_components=2)
+    pca_fit = pca.fit_transform(trajectory)
     fig = plt.figure()
-    ax = fig.gca(projection='3d')
 
-    # Compute the CE loss on a grid of points (corresonding to different w).
-    axis1 = np.arange(-np.pi, +np.pi, 0.05)  # Just an example
-    axis2 = np.arange(-np.pi, +np.pi, 0.05)  # Just an example
+    dimensions_width = 20
+
+    # TODO: Work on the linspace
+    min_x, min_y, max_x, max_y = min(pca_fit[:, 0]), min(pca_fit[:, 1]), max(pca_fit[:, 0]), max(pca_fit[:, 1])
+    axis1 = np.linspace(min_x, max_x, dimensions_width)
+    axis2 = np.linspace(min_y, max_y, dimensions_width)
+
     Xaxis, Yaxis = np.meshgrid(axis1, axis2)
     Zaxis = np.zeros((len(axis1), len(axis2)))
+
     for i in range(len(axis1)):
         for j in range(len(axis2)):
-            Zaxis[i, j] = toyFunction(Xaxis[i, j], Yaxis[i, j])
-    ax.plot_surface(Xaxis, Yaxis, Zaxis, alpha=0.6)  # Keep alpha < 1 so we can see the scatter plot too.
+            pca_inverse = pca.inverse_transform([Xaxis[i, j], Yaxis[i, j]])
+            loss, _, _, _, _ = forward_prop(trainX, trainY, pca_inverse)
+            Zaxis[i, j] = loss
 
-    # Now superimpose a scatter plot showing the weights during SGD.
-    Xaxis = 2 * np.pi * np.random.random(8) - np.pi  # Just an example
-    Yaxis = 2 * np.pi * np.random.random(8) - np.pi  # Just an example
-    Zaxis = toyFunction(Xaxis, Yaxis)
-    ax.scatter(Xaxis, Yaxis, Zaxis, color='r')
+    ax = fig.add_subplot(projection='3d')
+    ax.plot_surface(Xaxis, Yaxis, Zaxis, alpha=0.6)
+    ax.set_zlabel('CE Loss')
 
     plt.show()
+
 
 def plot_training_history(history, epochs, plot_metric="accuracy", plot_metric_label="Accuracy", has_validation=True):
     acc = history.history[plot_metric]
@@ -402,7 +398,8 @@ def problem_3a():
 
     model.summary()
 
-    training_history = model.fit(X_train, y_train, validation_data=(X_val, y_val), batch_size=BATCH_SIZE, epochs=NUM_EPOCHS)
+    training_history = model.fit(X_train, y_train, validation_data=(X_val, y_val), batch_size=BATCH_SIZE,
+                                 epochs=NUM_EPOCHS)
 
     (loss, accuracy) = model.evaluate(X_test, y_test)
     print("Testing loss:", loss)
@@ -518,6 +515,7 @@ def problem_3b():
     else:
         print('N/A')
 
+
 if __name__ == "__main__":
     (trainX, trainY), (_, _), (testX, testY) = setup_MNIST()
 
@@ -526,12 +524,12 @@ if __name__ == "__main__":
 
     # Perform gradient check on 5 training examples
     ##TODO: DO this
-    # print(scipy.optimize.check_grad(lambda wab: forward_prop(np.atleast_2d(trainX[:,0:5]), np.atleast_2d(trainY[:,0:5]), wab)[0], \
-    #                                 lambda wab: back_prop(np.atleast_2d(trainX[:,0:5]), np.atleast_2d(trainY[:,0:5]), wab), \
+    # print(scipy.optimize.check_grad(lambda wab: forward_prop(np.atleast_2d(trainX[0:5, :]), np.atleast_2d(trainY[0:5, :]), wab)[0], \
+    #                                 lambda wab: back_prop(np.atleast_2d(trainX[0:5, :]), np.atleast_2d(trainY[0:5, :]), wab)[0], \
     #                                 weightsAndBiases))
 
     weightsAndBiases, trajectory = train(trainX, trainY, weightsAndBiases, testX, testY)
 
     # Plot the SGD trajectory
-    ##TODO: DO this
+    # TODO: DO PART B of problem 4
     plotSGDPath(trainX, trainY, trajectory)

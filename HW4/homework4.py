@@ -169,21 +169,27 @@ def back_prop(x, y, weightsAndBiases):
 
         if i == NUM_HIDDEN_LAYERS:
             gradient_w = -(1 / n) * (h.T @ previous_error)
-            gradient_b = -(1 / n) * np.sum(previous_error)
+            gradient_b = -(1 / n) * np.sum(previous_error)  # TODO: add axis=0 for check_grad
         else:
-
             gradient_r = np.where(z > 0, 1, 0)  # Apply ReLu gradient on inputs to ReLu layer activation
             error = previous_error @ Ws[i + 1].T  # Find error in reference to the weights and previous error
             error = error * gradient_r  # Apply ReLu error to the current layer
 
             gradient_w = -(1 / n) * h.T @ error  # Find gradient based on ReLu error and inputs
-            gradient_b = -(1 / n) * np.sum(error)
+            gradient_b = -(1 / n) * np.sum(error)  # TODO: add axis=0 for check_grad
 
             previous_error = error  # Update error for next layer to be the current layer error
 
-        dJdWs.append(gradient_w)
+        dJdWs.append(gradient_w.T)
         dJdbs.append(gradient_b)
 
+        # print(f'The i is: {i}\n')
+        # print(f'W: {Ws[i].shape}')
+        # print(f'dW: {gradient_w.T.shape}')
+        #
+        # print('\n')
+        # print(f'b: {bs[i].shape}')
+        # print(f'db: {gradient_b.shape}')
         Ws[i] = Ws[i] - LEARNING_RATE * (gradient_w.T + L2_REGULARIZE * Ws[i])
         bs[i] = bs[i] - LEARNING_RATE * gradient_b
 
@@ -328,6 +334,24 @@ def plotSGDPath(trainX, trainY, trajectory):
     ax.plot_surface(Xaxis, Yaxis, Zaxis, alpha=0.6)
     ax.set_zlabel('CE Loss')
 
+    amt_points = 100  # Define Number of Loss Plots to plot
+
+    # Choose a random set of weight params from trajectory
+    chosen_params = np.random.choice(len(trajectory), size=amt_points, replace=False)
+    chosen_params = [trajectory[i] for i in chosen_params]
+
+    # PCA Transform the selected weight/bias parameters
+    pca_params_fit = pca.transform(chosen_params)  # Apply the already fitted model from the previous dataset
+    x_points, y_points = pca_params_fit[:, 0], pca_params_fit[:, 1]
+    Xaxis, Yaxis = x_points, y_points
+    Zaxis = np.zeros(len(chosen_params))
+
+    # Find Loss (Z-Axis) for each weight combination
+    for i, param in enumerate(chosen_params):
+        loss, _, _, _, _ = forward_prop(trainX, trainY, param)
+        Zaxis[i] = loss
+
+    ax.scatter(Xaxis, Yaxis, Zaxis, color='r')
     plt.show()
 
 

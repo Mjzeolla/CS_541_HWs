@@ -1,5 +1,3 @@
-import copy
-
 import numpy as np
 import matplotlib.pyplot as plt
 import scipy.optimize
@@ -9,6 +7,7 @@ import tensorflow as tf
 import keras
 from keras import layers
 import matplotlib.pyplot as plt
+from copy import deepcopy
 
 # For this assignment, assume that every hidden layer has the same number of neurons.
 NUM_HIDDEN_LAYERS = 3
@@ -193,10 +192,10 @@ def back_prop(x, y, weightsAndBiases):
         Ws[i] = Ws[i] - LEARNING_RATE * (gradient_w.T + L2_REGULARIZE * Ws[i])
         bs[i] = bs[i] - LEARNING_RATE * gradient_b
 
+    weightsAndBiases[:] = np.hstack([W.flatten() for W in Ws] + [b.flatten() for b in bs])
+
     # Concatenate gradients
-    # TODO: Revisit this weight update system (try and update in-place)
-    return np.hstack([dJdW.flatten() for dJdW in dJdWs] + [dJdb.flatten() for dJdb in dJdbs]), np.hstack(
-        [W.flatten() for W in Ws] + [b.flatten() for b in bs])
+    return np.hstack([dJdW.flatten() for dJdW in dJdWs] + [dJdb.flatten() for dJdb in dJdbs])
 
 
 def SGD_date_shuffle(X_train, y_train):
@@ -225,9 +224,8 @@ def train(trainX, trainY, weightsAndBiases, testX, testY):
             x_batch = X_train_shuffled[batch_start:batch_end]
             y_batch = y_train_shuffled[batch_start:batch_end]
 
-            gradients, weights = back_prop(x_batch, y_batch, weightsAndBiases)
-            weightsAndBiases = weights
-            trajectory.append(weights)
+            _ = back_prop(x_batch, y_batch, weightsAndBiases)
+            trajectory.append(deepcopy(weightsAndBiases))
 
     testing_loss, _, _, _, testing_accuracy = forward_prop(testX, testY, weightsAndBiases)
 
@@ -355,7 +353,8 @@ def plotSGDPath(trainX, trainY, trajectory):
     plt.show()
 
 
-def plot_training_history(history, epochs, plot_metric="accuracy", plot_metric_label="Accuracy", has_validation=True):
+def plot_training_history(history, epochs, plot_metric="accuracy", plot_metric_label="Accuracy", has_validation=True,
+                          testing_loss=None, testing_accuracy=None):
     acc = history.history[plot_metric]
     loss = history.history['loss']
 
@@ -374,6 +373,10 @@ def plot_training_history(history, epochs, plot_metric="accuracy", plot_metric_l
     plt.title('Training and Validation ' + plot_metric_label)
     plt.xlabel('EPOCHS')
 
+    if testing_accuracy:
+        plt.scatter(epochs_range[-1], testing_accuracy, color='red', marker='o')
+        plt.text(epochs_range[-1], testing_accuracy, f'Testing Accuracy {testing_accuracy * 100:.0f}%', ha='right', va='top')
+
     plt.subplot(1, 2, 2)
     plt.plot(epochs_range, loss, label='Training Loss')
     if has_validation:
@@ -381,6 +384,11 @@ def plot_training_history(history, epochs, plot_metric="accuracy", plot_metric_l
     plt.legend(loc='upper right')
     plt.xlabel('EPOCHS')
     plt.title('Training and Validation Loss')
+
+    if testing_loss:
+        plt.scatter(epochs_range[-1], testing_loss, color='red', marker='o')
+        plt.text(epochs_range[-1], testing_loss, f'Testing Loss {testing_loss:.2f}', ha='right', va='top')
+
     plt.show()
 
 
@@ -409,8 +417,8 @@ def tf_build_model(architecture, l2_rate):
 
 def problem_3a():
     print('\nTesting problem_3a:')
-    NUM_EPOCHS = 50
-    (X_train, y_train), (X_val, y_val), (X_test, y_test) = setup_MNIST()
+    NUM_EPOCHS = 100
+    (X_train, y_train), (X_val, y_val), (X_test, y_test) = setup_MNIST(has_validation=True)
 
     if MODEL_ARCHITECTURE[0]['input_shape'] is None:
         ValueError('No input_shape passed to first layer')
@@ -433,21 +441,21 @@ def problem_3a():
 
 
 def findBestHyperparameters():
-    (X_train, y_train), (X_val, y_val), (X_test, y_test) = setup_MNIST()
+    (X_train, y_train), (X_val, y_val), (X_test, y_test) = setup_MNIST(has_validation=True)
 
     if TEST_RUN:
-        HIDDEN_LAYERS = [10]
-        NEURON_SIZES = [300]
-        LEARNING_RATES = [0.01]
-        BATCH_SIZES = [32]
-        EPOCHS_RANGE = [100]
-        L2_REGULARIZE_RANGE = [0.01]
+        HIDDEN_LAYERS = [5]
+        NEURON_SIZES = [50]
+        LEARNING_RATES = [0.001]
+        BATCH_SIZES = [64]
+        EPOCHS_RANGE = [200]
+        L2_REGULARIZE_RANGE = [0.001]
     else:
         HIDDEN_LAYERS = [3, 4, 5]
         NEURON_SIZES = [40, 50]
         LEARNING_RATES = [0.01]
         BATCH_SIZES = [64]
-        EPOCHS_RANGE = [50]
+        EPOCHS_RANGE = [200]
         L2_REGULARIZE_RANGE = [0.01]
 
     n_models = len(L2_REGULARIZE_RANGE) * len(EPOCHS_RANGE) * len(HIDDEN_LAYERS) * len(NEURON_SIZES) * len(
@@ -508,7 +516,10 @@ def findBestHyperparameters():
                                 'model': model,
                                 'history': training_history,
                                 'epochs': epochs,
+                                'batch_size': batch_size,
+                                'architecture': architecture,
                                 'l2_strength': l2_strength,
+                                'learning_rate': learning_rate,
                                 'testing_results': {
                                     'loss': loss,
                                     'accuracy': accuracy
@@ -523,10 +534,10 @@ def findBestHyperparameters():
         return models
 
 
-def problem_3b():
+def problem_3c():
     print('\nTesting problem_3b:')
     models = findBestHyperparameters()
-    sorted_models_by_validation = sorted(models, key=lambda obj: float(obj['validation_results']['accuracy']),
+    sorted_models_by_validation = sorted(models, key=lambda obj: float(obj['validation_results']['loss']),
                                          reverse=True)
 
     print('\nTesting problem_3c:')
@@ -534,8 +545,30 @@ def problem_3b():
     if len(sorted_models_by_validation) > 0:
         best_model = sorted_models_by_validation[0]
         print(best_model)
-        best_training_history, epochs = best_model['history'], best_model['epochs']
-        plot_training_history(best_training_history, epochs)
+
+        print('\nRe-training best model!\n')
+        model = tf_build_model(best_model['architecture'], best_model['l2_strength'])
+
+        optimizer = tf.keras.optimizers.SGD(learning_rate=best_model['learning_rate'])
+        model.compile(optimizer=optimizer, loss='categorical_crossentropy', metrics=['accuracy'])
+
+        model.summary()
+
+        print(
+            f'\nTraining NN with EPOCHS={best_model["epochs"]}, BATCH_SIZE={best_model["batch_size"]}, LEARNING_RATE={best_model["learning_rate"]} and '
+            f'L2_REGULARIZE={best_model["l2_strength"]}, ARCHITECTURE={best_model["architecture"]}')
+
+        (X_train, y_train), (X_val, y_val), (X_test, y_test) = setup_MNIST(has_validation=True)
+
+        training_history = model.fit(X_train, y_train, validation_data=(X_val, y_val),
+                                     batch_size=best_model["batch_size"], epochs=best_model["epochs"])
+
+        (loss, accuracy) = model.evaluate(X_test, y_test)
+        print("Testing loss:", loss)
+        print(f"Testing accuracy: {accuracy * 100}%")
+
+        epochs = best_model['epochs']
+        plot_training_history(training_history, epochs, testing_loss=loss, testing_accuracy=accuracy)
     else:
         print('N/A')
 
@@ -548,6 +581,7 @@ if __name__ == "__main__":
 
     # Perform gradient check on 5 training examples
     ##TODO: DO this
+    print('The check_grad value is:')
     # print(scipy.optimize.check_grad(lambda wab: forward_prop(np.atleast_2d(trainX[0:5, :]), np.atleast_2d(trainY[0:5, :]), wab)[0], \
     #                                 lambda wab: back_prop(np.atleast_2d(trainX[0:5, :]), np.atleast_2d(trainY[0:5, :]), wab)[0], \
     #                                 weightsAndBiases))
@@ -555,5 +589,8 @@ if __name__ == "__main__":
     weightsAndBiases, trajectory = train(trainX, trainY, weightsAndBiases, testX, testY)
 
     # Plot the SGD trajectory
-    # TODO: DO PART B of problem 4
+    # TODO: DO PART B of problem 4 (it should be done now)
     plotSGDPath(trainX, trainY, trajectory)
+
+    problem_3a()
+    problem_3c()

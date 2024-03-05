@@ -8,6 +8,7 @@ import keras
 from keras import layers
 import matplotlib.pyplot as plt
 from copy import deepcopy
+import sys
 
 # For this assignment, assume that every hidden layer has the same number of neurons.
 NUM_HIDDEN_LAYERS = 3
@@ -24,6 +25,9 @@ CLASSES = 10
 np.random.seed(SEED)
 
 TEST_RUN = False
+COPY_LOGS_PROBLEM_3 = False
+COPY_LOGS_PROBLEM_2 = False
+
 MODEL_ARCHITECTURE = [
     {
         'name': 'input_layer',
@@ -354,15 +358,18 @@ def plotSGDPath(trainX, trainY, trajectory):
 
 
 def plot_training_history(history, epochs, plot_metric="accuracy", plot_metric_label="Accuracy", has_validation=True,
-                          testing_loss=None, testing_accuracy=None):
-    acc = history.history[plot_metric]
-    loss = history.history['loss']
+                          testing_loss=None, testing_accuracy=None, epoch_reduce=None, suptitle=None):
+    acc = history.history[plot_metric][-epoch_reduce:] if epoch_reduce else history.history[plot_metric]
+    loss = history.history['loss'][-epoch_reduce:]if epoch_reduce else history.history['loss']
 
     if has_validation:
-        val_acc = history.history['val_' + plot_metric]
-        val_loss = history.history['val_loss']
+        val_acc = history.history['val_' + plot_metric][-epoch_reduce:] if epoch_reduce else history.history['val_' + plot_metric]
+        val_loss = history.history['val_loss'][-epoch_reduce:] if epoch_reduce else history.history['val_loss']
 
-    epochs_range = range(epochs)
+    if epoch_reduce:
+        epochs_range = range(epochs - epoch_reduce, epochs)
+    else:
+        epochs_range = range(epochs)
 
     plt.figure(figsize=(8, 8))
     plt.subplot(1, 2, 1)
@@ -388,6 +395,9 @@ def plot_training_history(history, epochs, plot_metric="accuracy", plot_metric_l
     if testing_loss:
         plt.scatter(epochs_range[-1], testing_loss, color='red', marker='o')
         plt.text(epochs_range[-1], testing_loss, f'Testing Loss {testing_loss:.2f}', ha='right', va='top')
+
+    if suptitle:
+        plt.suptitle(suptitle)
 
     plt.show()
 
@@ -453,10 +463,10 @@ def findBestHyperparameters():
     else:
         HIDDEN_LAYERS = [3, 4, 5]
         NEURON_SIZES = [40, 50]
-        LEARNING_RATES = [0.01]
+        LEARNING_RATES = [0.001]
         BATCH_SIZES = [64]
-        EPOCHS_RANGE = [200]
-        L2_REGULARIZE_RANGE = [0.01]
+        EPOCHS_RANGE = [220]
+        L2_REGULARIZE_RANGE = [0.001]
 
     n_models = len(L2_REGULARIZE_RANGE) * len(EPOCHS_RANGE) * len(HIDDEN_LAYERS) * len(NEURON_SIZES) * len(
         LEARNING_RATES) * len(BATCH_SIZES)
@@ -530,7 +540,7 @@ def findBestHyperparameters():
                                 }
                             })
 
-                            plot_training_history(training_history, epochs)
+                            # plot_training_history(training_history, epochs)
         return models
 
 
@@ -539,14 +549,20 @@ def problem_3c():
     models = findBestHyperparameters()
     sorted_models_by_validation = sorted(models, key=lambda obj: float(obj['validation_results']['loss']),
                                          reverse=True)
-
-    print('\nTesting problem_3c:')
     print('The Best Model Was: ')
     if len(sorted_models_by_validation) > 0:
         best_model = sorted_models_by_validation[0]
         print(best_model)
+    else:
+        print('N/A')
 
-        print('\nRe-training best model!\n')
+    print('\nTesting problem_3c:')
+    print('The model being used is:')
+    if len(sorted_models_by_validation) > 0:
+        best_model = sorted_models_by_validation[0]
+        print(best_model)
+
+        print('\nRe-training the best model!\n')
         model = tf_build_model(best_model['architecture'], best_model['l2_strength'])
 
         optimizer = tf.keras.optimizers.SGD(learning_rate=best_model['learning_rate'])
@@ -568,7 +584,11 @@ def problem_3c():
         print(f"Testing accuracy: {accuracy * 100}%")
 
         epochs = best_model['epochs']
-        plot_training_history(training_history, epochs, testing_loss=loss, testing_accuracy=accuracy)
+        plot_training_history(training_history, epochs, testing_loss=loss, testing_accuracy=accuracy,
+                              suptitle='All Training Epochs')
+
+        plot_training_history(training_history, epochs, testing_loss=loss, testing_accuracy=accuracy,
+                              epoch_reduce=20, suptitle='Last 20 Training Epochs')
     else:
         print('N/A')
 
@@ -592,5 +612,16 @@ if __name__ == "__main__":
     # TODO: DO PART B of problem 4 (it should be done now)
     plotSGDPath(trainX, trainY, trajectory)
 
-    problem_3a()
-    problem_3c()
+    if COPY_LOGS_PROBLEM_3:
+        original_stdout = sys.stdout
+        logs_path = 'run_problem_3_logs.txt'
+        with open(logs_path, 'w') as log_file:
+            sys.stdout = log_file
+            problem_3a()
+            problem_3c()
+            print('\n')
+        sys.stdout = original_stdout
+    else:
+        problem_3a()
+        problem_3c()
+        print('\n')

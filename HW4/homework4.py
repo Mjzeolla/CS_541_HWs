@@ -25,8 +25,8 @@ CLASSES = 10
 np.random.seed(SEED)
 
 TEST_RUN = False
-COPY_LOGS_PROBLEM_3 = False
 COPY_LOGS_PROBLEM_2 = False
+COPY_LOGS_PROBLEM_3 = False
 
 MODEL_ARCHITECTURE = [
     {
@@ -318,7 +318,6 @@ def plotSGDPath(trainX, trainY, trajectory):
 
     dimensions_width = 20
 
-    # TODO: Work on the linspace
     min_x, min_y, max_x, max_y = min(pca_fit[:, 0]), min(pca_fit[:, 1]), max(pca_fit[:, 0]), max(pca_fit[:, 1])
     axis1 = np.linspace(min_x, max_x, dimensions_width)
     axis2 = np.linspace(min_y, max_y, dimensions_width)
@@ -463,7 +462,7 @@ def findBestHyperparameters():
     else:
         HIDDEN_LAYERS = [3, 4, 5]
         NEURON_SIZES = [40, 50]
-        LEARNING_RATES = [0.001]
+        LEARNING_RATES = [0.01, 0.001]
         BATCH_SIZES = [64]
         EPOCHS_RANGE = [220]
         L2_REGULARIZE_RANGE = [0.001]
@@ -609,7 +608,6 @@ if __name__ == "__main__":
     weightsAndBiases, trajectory = train(trainX, trainY, weightsAndBiases, testX, testY)
 
     # Plot the SGD trajectory
-    # TODO: DO PART B of problem 4 (it should be done now)
     plotSGDPath(trainX, trainY, trajectory)
 
     if COPY_LOGS_PROBLEM_3:

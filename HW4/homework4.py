@@ -156,7 +156,6 @@ def forward_prop(x, y, weightsAndBiases):
     # Return loss, pre-activations, post-activations, and predictions
     return loss, zs, hs, yhat, acc
 
-
 def back_prop(x, y, weightsAndBiases):
     loss, zs, hs, yhat, acc = forward_prop(x, y, weightsAndBiases)
     Ws, bs = unpack(weightsAndBiases)
@@ -196,10 +195,10 @@ def back_prop(x, y, weightsAndBiases):
         Ws[i] = Ws[i] - LEARNING_RATE * (gradient_w.T + L2_REGULARIZE * Ws[i])
         bs[i] = bs[i] - LEARNING_RATE * gradient_b
 
-    weightsAndBiases[:] = np.hstack([W.flatten() for W in Ws] + [b.flatten() for b in bs])
+    _temp_weightsAndBiases = np.hstack([W.flatten() for W in Ws] + [b.flatten() for b in bs])
 
     # Concatenate gradients
-    return np.hstack([dJdW.flatten() for dJdW in dJdWs] + [dJdb.flatten() for dJdb in dJdbs])
+    return np.hstack([dJdW.flatten() for dJdW in dJdWs] + [dJdb.flatten() for dJdb in dJdbs]), _temp_weightsAndBiases
 
 
 def SGD_date_shuffle(X_train, y_train):
@@ -228,8 +227,9 @@ def train(trainX, trainY, weightsAndBiases, testX, testY):
             x_batch = X_train_shuffled[batch_start:batch_end]
             y_batch = y_train_shuffled[batch_start:batch_end]
 
-            _ = back_prop(x_batch, y_batch, weightsAndBiases)
-            trajectory.append(deepcopy(weightsAndBiases))
+            _, _temp_weightsAndBiases = back_prop(x_batch, y_batch, weightsAndBiases)
+            weightsAndBiases = _temp_weightsAndBiases
+            trajectory.append(weightsAndBiases)
 
     testing_loss, _, _, _, testing_accuracy = forward_prop(testX, testY, weightsAndBiases)
 

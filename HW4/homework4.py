@@ -7,7 +7,6 @@ import tensorflow as tf
 import keras
 from keras import layers
 import matplotlib.pyplot as plt
-from copy import deepcopy
 import sys
 
 # For this assignment, assume that every hidden layer has the same number of neurons.
@@ -16,7 +15,7 @@ NUM_INPUT = 784
 NUM_HIDDEN = 10
 NUM_OUTPUT = 10
 VALIDATION_SIZE = 0.2
-SEED = 0
+SEED = 43
 LEARNING_RATE = 0.01
 BATCH_SIZE = 64
 L2_REGULARIZE = 0.01
@@ -171,14 +170,14 @@ def back_prop(x, y, weightsAndBiases):
 
         if i == NUM_HIDDEN_LAYERS:
             gradient_w = -(1 / n) * (h.T @ previous_error)
-            gradient_b = -(1 / n) * np.sum(previous_error)  # TODO: add axis=0 for check_grad
+            gradient_b = -(1 / n) * np.sum(previous_error, axis=0)  # TODO: add axis=0 for check_grad
         else:
             gradient_r = np.where(z > 0, 1, 0)  # Apply ReLu gradient on inputs to ReLu layer activation
             error = previous_error @ Ws[i + 1].T  # Find error in reference to the weights and previous error
             error = error * gradient_r  # Apply ReLu error to the current layer
 
             gradient_w = -(1 / n) * h.T @ error  # Find gradient based on ReLu error and inputs
-            gradient_b = -(1 / n) * np.sum(error)  # TODO: add axis=0 for check_grad
+            gradient_b = -(1 / n) * np.sum(error, axis=0)  # TODO: add axis=0 for check_grad
 
             previous_error = error  # Update error for next layer to be the current layer error
 
@@ -196,7 +195,8 @@ def back_prop(x, y, weightsAndBiases):
         bs[i] = bs[i] - LEARNING_RATE * gradient_b
 
     _temp_weightsAndBiases = np.hstack([W.flatten() for W in Ws] + [b.flatten() for b in bs])
-
+    dJdWs.reverse()
+    dJdbs.reverse()
     # Concatenate gradients
     return np.hstack([dJdW.flatten() for dJdW in dJdWs] + [dJdb.flatten() for dJdb in dJdbs]), _temp_weightsAndBiases
 
@@ -601,9 +601,9 @@ if __name__ == "__main__":
     # Perform gradient check on 5 training examples
     ##TODO: DO this
     print('The check_grad value is:')
-    # print(scipy.optimize.check_grad(lambda wab: forward_prop(np.atleast_2d(trainX[0:5, :]), np.atleast_2d(trainY[0:5, :]), wab)[0], \
-    #                                 lambda wab: back_prop(np.atleast_2d(trainX[0:5, :]), np.atleast_2d(trainY[0:5, :]), wab)[0], \
-    #                                 weightsAndBiases))
+    print(scipy.optimize.check_grad(lambda wab: forward_prop(np.atleast_2d(trainX[0:5, :]), np.atleast_2d(trainY[0:5, :]), wab)[0], \
+                                    lambda wab: back_prop(np.atleast_2d(trainX[0:5, :]), np.atleast_2d(trainY[0:5, :]), wab)[0], \
+                                    weightsAndBiases))
 
     weightsAndBiases, trajectory = train(trainX, trainY, weightsAndBiases, testX, testY)
 

@@ -27,6 +27,8 @@ TEST_RUN = False
 COPY_LOGS_PROBLEM_2 = False
 COPY_LOGS_PROBLEM_3 = False
 
+run_with_smaller_sample = False
+
 MODEL_ARCHITECTURE = [
     {
         'name': 'input_layer',
@@ -629,8 +631,6 @@ def problem_2():
     print('\nRunning problem_2:')
     (trainX, trainY), (_, _), (testX, testY) = setup_MNIST()
 
-    RUN_WITH_SMALLER_SAMPLE = False
-
     # Initialize weights and biases randomly
     weightsAndBiases = initWeightsAndBiases()
 
@@ -643,7 +643,7 @@ def problem_2():
 
     weightsAndBiases, trajectory = train(trainX, trainY, weightsAndBiases, testX, testY)
 
-    if RUN_WITH_SMALLER_SAMPLE:
+    if run_with_smaller_sample:
         # Run again for a smaller set of points! (2500)
         weightsAndBiases = initWeightsAndBiases()
 
@@ -685,3 +685,5 @@ if __name__ == "__main__":
         problem_3a()
         problem_3c()
         print('\n')
+    run_with_smaller_sample = True
+    problem_2()

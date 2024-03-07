@@ -18,7 +18,7 @@ VALIDATION_SIZE = 0.2
 SEED = 43
 LEARNING_RATE = 0.01
 BATCH_SIZE = 64
-L2_REGULARIZE = 0.01
+L2_REGULARIZE = 0.001
 CLASSES = 10
 
 np.random.seed(SEED)
@@ -210,7 +210,9 @@ def SGD_date_shuffle(X_train, y_train):
 def train(trainX, trainY, weightsAndBiases, testX, testY):
     NUM_EPOCHS = 100
     trajectory = []
+    _, (X_val, y_val), _ = setup_MNIST(has_validation=True)
 
+    val_losses, val_accs = [], []
     print(
         f'\nTraining Model with EPOCHS={NUM_EPOCHS}, BATCH_SIZE={BATCH_SIZE}, LEARNING_RATE={LEARNING_RATE} and '
         f'L2_REGULARIZE={L2_REGULARIZE}')
@@ -231,9 +233,37 @@ def train(trainX, trainY, weightsAndBiases, testX, testY):
             weightsAndBiases = _temp_weightsAndBiases
             trajectory.append(weightsAndBiases)
 
+        vaL_loss, _, _, _, val_acc = forward_prop(X_val, y_val, weightsAndBiases)
+        val_losses.append(vaL_loss)
+        val_accs.append(val_acc)
+
     testing_loss, _, _, _, testing_accuracy = forward_prop(testX, testY, weightsAndBiases)
 
     print(f"\nTesting Loss: {testing_loss} and Testing Accuracy: {testing_accuracy}")
+
+    plt.subplot(1, 2, 1)
+    plt.plot(val_losses)
+    plt.scatter(NUM_EPOCHS - 1, testing_loss, color='red', marker='o')
+
+    plt.text(NUM_EPOCHS, testing_loss, f'Testing Loss ', ha='right', va='top')
+
+    plt.xlabel('EPOCH')
+    plt.ylabel('CE Loss')
+    plt.title('Validation CE vs EPOCH')
+    plt.legend()
+
+    plt.subplot(1, 2, 2)
+    plt.plot(val_accs)
+    plt.scatter(NUM_EPOCHS - 1, testing_accuracy, color='red', marker='o')
+
+    plt.text(NUM_EPOCHS - 1, testing_accuracy, f'Testing Accuracy ', ha='right', va='top')
+
+    plt.xlabel('EPOCH')
+    plt.ylabel('Accuracy')
+    plt.title('Validation Accuracy vs EPOCH')
+
+    plt.legend()
+    plt.show()
 
     return weightsAndBiases, trajectory
 

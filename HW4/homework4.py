@@ -171,14 +171,14 @@ def back_prop(x, y, weightsAndBiases):
 
         if i == NUM_HIDDEN_LAYERS:
             gradient_w = -(1 / n) * (h.T @ previous_error)
-            gradient_b = -(1 / n) * np.sum(previous_error, axis=0)  # TODO: add axis=0 for check_grad
+            gradient_b = -(1 / n) * np.sum(previous_error, axis=0)
         else:
             gradient_r = np.where(z > 0, 1, 0)  # Apply ReLu gradient on inputs to ReLu layer activation
             error = previous_error @ Ws[i + 1].T  # Find error in reference to the weights and previous error
             error = error * gradient_r  # Apply ReLu error to the current layer
 
             gradient_w = -(1 / n) * h.T @ error  # Find gradient based on ReLu error and inputs
-            gradient_b = -(1 / n) * np.sum(error, axis=0)  # TODO: add axis=0 for check_grad
+            gradient_b = -(1 / n) * np.sum(error, axis=0)
 
             previous_error = error  # Update error for next layer to be the current layer error
 
@@ -369,17 +369,17 @@ def plotSGDPath(trainX, trainY, trajectory):
     amt_points = 100  # Define Number of Loss Plots to plot
 
     # Choose a random set of weight params from trajectory
-    chosen_params = np.random.choice(len(trajectory), size=amt_points, replace=False)
-    chosen_params = [trajectory[i] for i in chosen_params]
+    chosen_trajectory = np.random.choice(len(trajectory), size=amt_points, replace=False)
+    chosen_trajectory = [trajectory[i] for i in chosen_trajectory]
 
     # PCA Transform the selected weight/bias parameters
-    pca_params_fit = pca.transform(chosen_params)  # Apply the already fitted model from the previous dataset
+    pca_params_fit = pca.transform(chosen_trajectory)  # Apply the already fitted model from the previous dataset
     x_points, y_points = pca_params_fit[:, 0], pca_params_fit[:, 1]
     Xaxis, Yaxis = x_points, y_points
-    Zaxis = np.zeros(len(chosen_params))
+    Zaxis = np.zeros(len(chosen_trajectory))
 
     # Find Loss (Z-Axis) for each weight combination
-    for i, param in enumerate(chosen_params):
+    for i, param in enumerate(chosen_trajectory):
         loss, _, _, _, _ = forward_prop(trainX, trainY, param)
         Zaxis[i] = loss
 
@@ -629,6 +629,8 @@ def problem_2():
     print('\nRunning problem_2:')
     (trainX, trainY), (_, _), (testX, testY) = setup_MNIST()
 
+    RUN_WITH_SMALLER_SAMPLE = False
+
     # Initialize weights and biases randomly
     weightsAndBiases = initWeightsAndBiases()
 
@@ -640,6 +642,18 @@ def problem_2():
         weightsAndBiases))
 
     weightsAndBiases, trajectory = train(trainX, trainY, weightsAndBiases, testX, testY)
+
+    if RUN_WITH_SMALLER_SAMPLE:
+        # Run again for a smaller set of points! (2500)
+        weightsAndBiases = initWeightsAndBiases()
+
+        train_samples = np.random.choice(len(trainX), size=2500, replace=False)
+        test_samples = np.random.choice(len(testX), size=2500, replace=False)
+
+        trainX, trainY = trainX[train_samples], trainY[train_samples]
+        testX, testY = testX[test_samples], testY[test_samples]
+
+        weightsAndBiases, trajectory = train(trainX, trainY, weightsAndBiases, testX, testY)
 
     # Plot the SGD trajectory
     plotSGDPath(trainX, trainY, trajectory)

@@ -155,6 +155,7 @@ def forward_prop(x, y, weightsAndBiases):
     # Return loss, pre-activations, post-activations, and predictions
     return loss, zs, hs, yhat, acc
 
+
 def back_prop(x, y, weightsAndBiases):
     loss, zs, hs, yhat, acc = forward_prop(x, y, weightsAndBiases)
     Ws, bs = unpack(weightsAndBiases)
@@ -389,10 +390,11 @@ def plotSGDPath(trainX, trainY, trajectory):
 def plot_training_history(history, epochs, plot_metric="accuracy", plot_metric_label="Accuracy", has_validation=True,
                           testing_loss=None, testing_accuracy=None, epoch_reduce=None, suptitle=None):
     acc = history.history[plot_metric][-epoch_reduce:] if epoch_reduce else history.history[plot_metric]
-    loss = history.history['loss'][-epoch_reduce:]if epoch_reduce else history.history['loss']
+    loss = history.history['loss'][-epoch_reduce:] if epoch_reduce else history.history['loss']
 
     if has_validation:
-        val_acc = history.history['val_' + plot_metric][-epoch_reduce:] if epoch_reduce else history.history['val_' + plot_metric]
+        val_acc = history.history['val_' + plot_metric][-epoch_reduce:] if epoch_reduce else history.history[
+            'val_' + plot_metric]
         val_loss = history.history['val_loss'][-epoch_reduce:] if epoch_reduce else history.history['val_loss']
 
     if epoch_reduce:
@@ -411,7 +413,8 @@ def plot_training_history(history, epochs, plot_metric="accuracy", plot_metric_l
 
     if testing_accuracy:
         plt.scatter(epochs_range[-1], testing_accuracy, color='red', marker='o')
-        plt.text(epochs_range[-1], testing_accuracy, f'Testing Accuracy {testing_accuracy * 100:.0f}%', ha='right', va='top')
+        plt.text(epochs_range[-1], testing_accuracy, f'Testing Accuracy {testing_accuracy * 100:.0f}%', ha='right',
+                 va='top')
 
     plt.subplot(1, 2, 2)
     plt.plot(epochs_range, loss, label='Training Loss')
@@ -622,23 +625,38 @@ def problem_3c():
         print('N/A')
 
 
-if __name__ == "__main__":
+def problem_2():
+    print('\nRunning problem_2:')
     (trainX, trainY), (_, _), (testX, testY) = setup_MNIST()
 
     # Initialize weights and biases randomly
     weightsAndBiases = initWeightsAndBiases()
 
     # Perform gradient check on 5 training examples
-    ##TODO: DO this
     print('The check_grad value is:')
-    print(scipy.optimize.check_grad(lambda wab: forward_prop(np.atleast_2d(trainX[0:5, :]), np.atleast_2d(trainY[0:5, :]), wab)[0], \
-                                    lambda wab: back_prop(np.atleast_2d(trainX[0:5, :]), np.atleast_2d(trainY[0:5, :]), wab)[0], \
-                                    weightsAndBiases))
+    print(scipy.optimize.check_grad(
+        lambda wab: forward_prop(np.atleast_2d(trainX[0:5, :]), np.atleast_2d(trainY[0:5, :]), wab)[0], \
+        lambda wab: back_prop(np.atleast_2d(trainX[0:5, :]), np.atleast_2d(trainY[0:5, :]), wab)[0], \
+        weightsAndBiases))
 
     weightsAndBiases, trajectory = train(trainX, trainY, weightsAndBiases, testX, testY)
 
     # Plot the SGD trajectory
     plotSGDPath(trainX, trainY, trajectory)
+
+
+if __name__ == "__main__":
+
+    if COPY_LOGS_PROBLEM_2:
+        original_stdout = sys.stdout
+        logs_path = 'run_problem_2_logs.txt'
+        with open(logs_path, 'w') as log_file:
+            sys.stdout = log_file
+            problem_2()
+            print('\n')
+        sys.stdout = original_stdout
+    else:
+        problem_2()
 
     if COPY_LOGS_PROBLEM_3:
         original_stdout = sys.stdout
